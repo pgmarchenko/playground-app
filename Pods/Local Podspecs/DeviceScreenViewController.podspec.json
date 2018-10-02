@@ -1,0 +1,22 @@
+{
+  "name": "DeviceScreenViewController",
+  "version": "0.1.3",
+  "summary": "DeviceScreenViewController helps to simulate device screen traits.",
+  "description": "DeviceScreenViewController helps to simulate device screen traits: status bar, safe area etc. It's pretty useful in playgrounds and screenshot generation.",
+  "homepage": "https://github.com/pgmarchenko/DeviceScreenViewController",
+  "license": "MIT",
+  "authors": {
+    "Pavel Marchenko": "pgmarchenko@gmail.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/pgmarchenko/DeviceScreenViewController.git",
+    "tag": "0.1.3"
+  },
+  "source_files": "DeviceScreenViewController/sources/**/*.swift",
+  "frameworks": "CoreGraphics",
+  "requires_arc": true,
+  "swift_version": "4.2"
+}

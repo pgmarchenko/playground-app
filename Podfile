@@ -11,4 +11,6 @@ target 'UI' do
     pod 'SnapKit',  '~> 4.0.0'
     pod 'RxSwift',  '~> 4.0'
     pod 'RxCocoa',  '~> 4.0'
+    
+    pod 'DeviceScreenViewController', :git => 'https://github.com/pgmarchenko/DeviceScreenViewController.git', :tag => '0.1.3'
 end
