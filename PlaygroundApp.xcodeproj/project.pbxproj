@@ -12,7 +12,35 @@
 		7F22410921638F2B001B53B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22410821638F2B001B53B2 /* ViewController.swift */; };
 		7F22410E21638F2C001B53B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410D21638F2C001B53B2 /* Assets.xcassets */; };
 		7F22411121638F2C001B53B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410F21638F2C001B53B2 /* LaunchScreen.storyboard */; };
+		7F98583A2163934800E922A6 /* UI.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F9858382163934800E922A6 /* UI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F98583D2163934800E922A6 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9858362163934800E922A6 /* UI.framework */; };
+		7F98583E2163934800E922A6 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9858362163934800E922A6 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F985846216393E900E922A6 /* MenuScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F985845216393E900E922A6 /* MenuScreenViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7F98583B2163934800E922A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F2240FB21638F2A001B53B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F9858352163934800E922A6;
+			remoteInfo = UI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7F9858422163934800E922A6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7F98583E2163934800E922A6 /* UI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		75FA25559350EC18EE7EC5F5 /* Pods_PlaygroundApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlaygroundApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +50,10 @@
 		7F22410D21638F2C001B53B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F22411021638F2C001B53B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F22411221638F2C001B53B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F9858362163934800E922A6 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F9858382163934800E922A6 /* UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UI.h; sourceTree = "<group>"; };
+		7F9858392163934800E922A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F985845216393E900E922A6 /* MenuScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenViewController.swift; sourceTree = "<group>"; };
 		B8E3CF4786BFA5C17934DAF1 /* Pods-PlaygroundApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaygroundApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlaygroundApp/Pods-PlaygroundApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BAD6AE7439421278BA115A36 /* Pods-PlaygroundApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaygroundApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlaygroundApp/Pods-PlaygroundApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -31,7 +63,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F98583D2163934800E922A6 /* UI.framework in Frameworks */,
 				51614CA0914DE785AABF68D9 /* Pods_PlaygroundApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F9858322163934800E922A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				7F22410521638F2A001B53B2 /* PlaygroundApp */,
+				7F9858372163934800E922A6 /* UI */,
 				7F22410421638F2A001B53B2 /* Products */,
 				A0392DF055C8951C2164A174 /* Pods */,
 				A65E2D8688A10429939404BE /* Frameworks */,
@@ -52,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				7F22410321638F2A001B53B2 /* PlaygroundApp.app */,
+				7F9858362163934800E922A6 /* UI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +108,32 @@
 				7F22411221638F2C001B53B2 /* Info.plist */,
 			);
 			path = PlaygroundApp;
+			sourceTree = "<group>";
+		};
+		7F9858372163934800E922A6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7F9858432163935900E922A6 /* Menu */,
+				7F985844216393AA00E922A6 /* Resources */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		7F9858432163935900E922A6 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				7F985845216393E900E922A6 /* MenuScreenViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		7F985844216393AA00E922A6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7F9858382163934800E922A6 /* UI.h */,
+				7F9858392163934800E922A6 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		A0392DF055C8951C2164A174 /* Pods */ = {
@@ -87,6 +155,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		7F9858332163934800E922A6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F98583A2163934800E922A6 /* UI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		7F22410221638F2A001B53B2 /* PlaygroundApp */ = {
 			isa = PBXNativeTarget;
@@ -98,15 +177,35 @@
 				7F22410121638F2A001B53B2 /* Resources */,
 				7EA7F096CBD579895262F9CF /* [CP] Embed Pods Frameworks */,
 				D52AC3EB21F45B94B79B9A1A /* [CP] Copy Pods Resources */,
+				7F9858422163934800E922A6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7F98583C2163934800E922A6 /* PBXTargetDependency */,
 			);
 			name = PlaygroundApp;
 			productName = PlaygroundApp;
 			productReference = 7F22410321638F2A001B53B2 /* PlaygroundApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7F9858352163934800E922A6 /* UI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F9858412163934800E922A6 /* Build configuration list for PBXNativeTarget "UI" */;
+			buildPhases = (
+				7F9858312163934800E922A6 /* Sources */,
+				7F9858322163934800E922A6 /* Frameworks */,
+				7F9858332163934800E922A6 /* Headers */,
+				7F9858342163934800E922A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UI;
+			productName = UI;
+			productReference = 7F9858362163934800E922A6 /* UI.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -120,6 +219,10 @@
 				TargetAttributes = {
 					7F22410221638F2A001B53B2 = {
 						CreatedOnToolsVersion = 10.0;
+					};
+					7F9858352163934800E922A6 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -137,6 +240,7 @@
 			projectRoot = "";
 			targets = (
 				7F22410221638F2A001B53B2 /* PlaygroundApp */,
+				7F9858352163934800E922A6 /* UI */,
 			);
 		};
 /* End PBXProject section */
@@ -148,6 +252,13 @@
 			files = (
 				7F22411121638F2C001B53B2 /* LaunchScreen.storyboard in Resources */,
 				7F22410E21638F2C001B53B2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F9858342163934800E922A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +325,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7F9858312163934800E922A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F985846216393E900E922A6 /* MenuScreenViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7F98583C2163934800E922A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7F9858352163934800E922A6 /* UI */;
+			targetProxy = 7F98583B2163934800E922A6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7F22410F21638F2C001B53B2 /* LaunchScreen.storyboard */ = {
@@ -348,6 +475,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8E3CF4786BFA5C17934DAF1 /* Pods-PlaygroundApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PlaygroundApp/Info.plist;
@@ -366,6 +494,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BAD6AE7439421278BA115A36 /* Pods-PlaygroundApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PlaygroundApp/Info.plist;
@@ -377,6 +506,64 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7F98583F2163934800E922A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = UI/Resources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = me.pgmarchenko.UI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7F9858402163934800E922A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = UI/Resources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.pgmarchenko.UI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -397,6 +584,15 @@
 			buildConfigurations = (
 				7F22411621638F2C001B53B2 /* Debug */,
 				7F22411721638F2C001B53B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F9858412163934800E922A6 /* Build configuration list for PBXNativeTarget "UI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F98583F2163934800E922A6 /* Debug */,
+				7F9858402163934800E922A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
