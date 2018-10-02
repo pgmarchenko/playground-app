@@ -16,6 +16,7 @@
 		7F98583D2163934800E922A6 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9858362163934800E922A6 /* UI.framework */; };
 		7F98583E2163934800E922A6 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9858362163934800E922A6 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7F985846216393E900E922A6 /* MenuScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F985845216393E900E922A6 /* MenuScreenViewController.swift */; };
+		B0657AE6D44E1D13A7BCFFFC /* Pods_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E0A4612B7569B334064D5D /* Pods_UI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		27956835F78B2B1237F5D370 /* Pods-UI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UI.release.xcconfig"; path = "Pods/Target Support Files/Pods-UI/Pods-UI.release.xcconfig"; sourceTree = "<group>"; };
 		75FA25559350EC18EE7EC5F5 /* Pods_PlaygroundApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlaygroundApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F22410321638F2A001B53B2 /* PlaygroundApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaygroundApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F22410621638F2B001B53B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +56,8 @@
 		7F9858382163934800E922A6 /* UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UI.h; sourceTree = "<group>"; };
 		7F9858392163934800E922A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F985845216393E900E922A6 /* MenuScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenViewController.swift; sourceTree = "<group>"; };
+		88E0A4612B7569B334064D5D /* Pods_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90A90191713EF87C49002930 /* Pods-UI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UI/Pods-UI.debug.xcconfig"; sourceTree = "<group>"; };
 		B8E3CF4786BFA5C17934DAF1 /* Pods-PlaygroundApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaygroundApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlaygroundApp/Pods-PlaygroundApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BAD6AE7439421278BA115A36 /* Pods-PlaygroundApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaygroundApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlaygroundApp/Pods-PlaygroundApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0657AE6D44E1D13A7BCFFFC /* Pods_UI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +146,8 @@
 			children = (
 				B8E3CF4786BFA5C17934DAF1 /* Pods-PlaygroundApp.debug.xcconfig */,
 				BAD6AE7439421278BA115A36 /* Pods-PlaygroundApp.release.xcconfig */,
+				90A90191713EF87C49002930 /* Pods-UI.debug.xcconfig */,
+				27956835F78B2B1237F5D370 /* Pods-UI.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				75FA25559350EC18EE7EC5F5 /* Pods_PlaygroundApp.framework */,
+				88E0A4612B7569B334064D5D /* Pods_UI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,10 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F9858412163934800E922A6 /* Build configuration list for PBXNativeTarget "UI" */;
 			buildPhases = (
+				B036FA620054B1AF864B7C68 /* [CP] Check Pods Manifest.lock */,
 				7F9858312163934800E922A6 /* Sources */,
 				7F9858322163934800E922A6 /* Frameworks */,
 				7F9858332163934800E922A6 /* Headers */,
 				7F9858342163934800E922A6 /* Resources */,
+				94DED7834DB1EAF154773B69 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,13 +281,53 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PlaygroundApp/Pods-PlaygroundApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlaygroundApp/Pods-PlaygroundApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94DED7834DB1EAF154773B69 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UI/Pods-UI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B036FA620054B1AF864B7C68 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D13BF52ED06A33406C1A389B /* [CP] Check Pods Manifest.lock */ = {
@@ -475,7 +525,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B8E3CF4786BFA5C17934DAF1 /* Pods-PlaygroundApp.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PlaygroundApp/Info.plist;
@@ -494,7 +543,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BAD6AE7439421278BA115A36 /* Pods-PlaygroundApp.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PlaygroundApp/Info.plist;
@@ -511,6 +559,7 @@
 		};
 		7F98583F2163934800E922A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90A90191713EF87C49002930 /* Pods-UI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -541,6 +590,7 @@
 		};
 		7F9858402163934800E922A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27956835F78B2B1237F5D370 /* Pods-UI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
