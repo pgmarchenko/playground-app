@@ -2,7 +2,9 @@ platform :ios, '10.0'
 
 target 'PlaygroundApp' do
     use_frameworks!
-
+   
+    pod 'RxCocoa',  '~> 4.0'
+    
 end
 
 target 'App' do

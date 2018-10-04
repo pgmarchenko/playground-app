@@ -13,9 +13,9 @@ public class MenuScreenViewController: UITabBarController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        downloadScreen.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        downloadScreen.tabBarItem = UITabBarItem.init(title: "Download", image: nil, selectedImage: nil)
         
-        magiColorScreen.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+        magiColorScreen.tabBarItem = UITabBarItem.init(title: "MagiColor", image: nil, selectedImage: nil)
         
         viewControllers = [downloadScreen, magiColorScreen]
     }
