@@ -4,5 +4,6 @@
         <page name='MenuScreen'/>
         <page name='DownloadScreen'/>
         <page name='MagiColorsScreen'/>
+        <page name='AdsFakeScreen'/>
     </pages>
 </playground>

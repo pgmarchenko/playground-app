@@ -12,6 +12,8 @@
 		7F22410E21638F2C001B53B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410D21638F2C001B53B2 /* Assets.xcassets */; };
 		7F22411121638F2C001B53B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410F21638F2C001B53B2 /* LaunchScreen.storyboard */; };
 		7F445A5021663B8500B121BF /* MenuScreenInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F445A4F21663B8500B121BF /* MenuScreenInteractions.swift */; };
+		7F445A53216643BF00B121BF /* AdsFakeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F445A52216643BF00B121BF /* AdsFakeScreenView.swift */; };
+		7F445A55216643CF00B121BF /* AdsFakeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F445A54216643CF00B121BF /* AdsFakeScreenViewController.swift */; };
 		7F756C7021662ED80018EB83 /* App.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F756C6E21662ED80018EB83 /* App.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F756C7321662ED80018EB83 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F756C6C21662ED70018EB83 /* App.framework */; };
 		7F756C7421662ED80018EB83 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F756C6C21662ED70018EB83 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -80,6 +82,8 @@
 		7F22411021638F2C001B53B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F22411221638F2C001B53B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F445A4F21663B8500B121BF /* MenuScreenInteractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenInteractions.swift; sourceTree = "<group>"; };
+		7F445A52216643BF00B121BF /* AdsFakeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsFakeScreenView.swift; sourceTree = "<group>"; };
+		7F445A54216643CF00B121BF /* AdsFakeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsFakeScreenViewController.swift; sourceTree = "<group>"; };
 		7F756C6C21662ED70018EB83 /* App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F756C6E21662ED80018EB83 /* App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
 		7F756C6F21662ED80018EB83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -183,6 +187,15 @@
 			path = PlaygroundApp;
 			sourceTree = "<group>";
 		};
+		7F445A512166439E00B121BF /* AdsFakeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7F445A52216643BF00B121BF /* AdsFakeScreenView.swift */,
+				7F445A54216643CF00B121BF /* AdsFakeScreenViewController.swift */,
+			);
+			path = AdsFakeScreen;
+			sourceTree = "<group>";
+		};
 		7F756C6D21662ED80018EB83 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +229,7 @@
 		7F9858372163934800E922A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7F445A512166439E00B121BF /* AdsFakeScreen */,
 				7F756C87216631510018EB83 /* DownloadScreen */,
 				7F756C7A21662F1F0018EB83 /* MagiColorScreen */,
 				7F9858432163935900E922A6 /* MenuScreen */,
@@ -652,8 +666,10 @@
 			files = (
 				7F756C8E2166319A0018EB83 /* DownloadScreenViewController.swift in Sources */,
 				7F756C8121662F830018EB83 /* MagiColorsScreenView.swift in Sources */,
+				7F445A53216643BF00B121BF /* AdsFakeScreenView.swift in Sources */,
 				7F756C8221662F830018EB83 /* MagiColorsScreenViewController.swift in Sources */,
 				7F756C8F2166319A0018EB83 /* DownloadScreenView.swift in Sources */,
+				7F445A55216643CF00B121BF /* AdsFakeScreenViewController.swift in Sources */,
 				7F985846216393E900E922A6 /* MenuScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
