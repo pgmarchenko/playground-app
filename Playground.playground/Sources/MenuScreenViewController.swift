@@ -15,5 +15,5 @@ public class MenuScreenViewController: UITabBarController {
     }
     
     public let leftList = DownloadScreenViewController()
-    public let rightList = UIViewController()
+    public let rightList = MagiColorScreenViewController()
 }

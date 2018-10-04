@@ -3,5 +3,6 @@
     <pages>
         <page name='MenuScreen'/>
         <page name='DownloadScreen'/>
+        <page name='MagiColorsScreen'/>
     </pages>
 </playground>
