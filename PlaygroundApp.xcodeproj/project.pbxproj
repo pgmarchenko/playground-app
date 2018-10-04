@@ -12,6 +12,7 @@
 		7F22410921638F2B001B53B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22410821638F2B001B53B2 /* ViewController.swift */; };
 		7F22410E21638F2C001B53B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410D21638F2C001B53B2 /* Assets.xcassets */; };
 		7F22411121638F2C001B53B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410F21638F2C001B53B2 /* LaunchScreen.storyboard */; };
+		7F445A5021663B8500B121BF /* MenuScreenInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F445A4F21663B8500B121BF /* MenuScreenInteractions.swift */; };
 		7F756C7021662ED80018EB83 /* App.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F756C6E21662ED80018EB83 /* App.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F756C7321662ED80018EB83 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F756C6C21662ED70018EB83 /* App.framework */; };
 		7F756C7421662ED80018EB83 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F756C6C21662ED70018EB83 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -89,6 +90,7 @@
 		7F22410D21638F2C001B53B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F22411021638F2C001B53B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F22411221638F2C001B53B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F445A4F21663B8500B121BF /* MenuScreenInteractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenInteractions.swift; sourceTree = "<group>"; };
 		7F756C6C21662ED70018EB83 /* App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F756C6E21662ED80018EB83 /* App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
 		7F756C6F21662ED80018EB83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				7F756C6F21662ED80018EB83 /* Info.plist */,
 				7F756C7821662EF40018EB83 /* MagiColorScreenInteractions.swift */,
 				7F756C852166311C0018EB83 /* DownloadScreenInteractions.swift */,
+				7F445A4F21663B8500B121BF /* MenuScreenInteractions.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F756C862166311C0018EB83 /* DownloadScreenInteractions.swift in Sources */,
+				7F445A5021663B8500B121BF /* MenuScreenInteractions.swift in Sources */,
 				7F756C7921662EF40018EB83 /* MagiColorScreenInteractions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

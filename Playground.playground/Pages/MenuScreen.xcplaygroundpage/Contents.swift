@@ -16,7 +16,6 @@ let (deviceVC, vc) = deviceScreenViewController(
     showStatusBar: true
 )
 
-menuVC.magiColorScreen.assembleMainInteractions()
-menuVC.downloadScreen.assembleInteractions()
+menuVC.assembleInterations()
 
 PlaygroundPage.current.liveView = deviceVC

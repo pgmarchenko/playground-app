@@ -18,6 +18,7 @@ public class DownloadScreenView: UIView {
     
     let waitingOverlayView = UIView()
     let cancelWaitingButton = UIButton()
+    let retryButton = UIButton()
 }
 
 extension DownloadScreenView {
@@ -32,10 +33,14 @@ extension DownloadScreenView {
         cancelWaitingButton.backgroundColor = .brown
         cancelWaitingButton.setTitle("Cancel", for: .normal)
         
+        retryButton.backgroundColor = .green
+        retryButton.setTitle("Retry", for: .normal)
+        
         addSubview(downloadAndOpenButton)
         addSubview(waitingOverlayView)
         
         waitingOverlayView.addSubview(cancelWaitingButton)
+        waitingOverlayView.addSubview(retryButton)
         
         setupLayout()
     }
@@ -51,6 +56,10 @@ extension DownloadScreenView {
         }
         
         cancelWaitingButton.snp.makeConstraints { make in
+            make.edges.equalTo(downloadAndOpenButton)
+        }
+        
+        retryButton.snp.makeConstraints { make in
             make.edges.equalTo(downloadAndOpenButton)
         }
     }
