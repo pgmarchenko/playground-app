@@ -5,7 +5,7 @@ import Foundation
 import DeviceScreenViewController
 
 let (deviceVC, vc) = deviceScreenViewController(
-    device: .phoneX,
+    device: .pad,
     orientation: .portrait,
     child: MenuScreenViewController(),
     showStatusBar: true

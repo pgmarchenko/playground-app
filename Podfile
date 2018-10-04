@@ -14,3 +14,11 @@ target 'UI' do
     
     pod 'DeviceScreenViewController', :git => 'https://github.com/pgmarchenko/DeviceScreenViewController.git', :tag => '0.1.3'
 end
+
+target 'Utilities' do
+    use_frameworks!
+    
+    pod 'RxSwift',  '~> 4.0'
+    pod 'RxCocoa',  '~> 4.0'
+    
+end

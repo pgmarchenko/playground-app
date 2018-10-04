@@ -14,6 +14,6 @@ public class MenuScreenViewController: UITabBarController {
         viewControllers = [leftList, rightList]
     }
     
-    public let leftList = ListScreenViewController()
-    public let rightList = ListScreenViewController()
+    public let leftList = DownloadScreenViewController()
+    public let rightList = UIViewController()
 }
