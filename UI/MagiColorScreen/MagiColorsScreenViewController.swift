@@ -20,6 +20,11 @@ public class MagiColorScreenViewController: UIViewController {
         return mainView.tutorialButton.rx.controlEvent(.touchUpInside)
     }
     
+    public var challengeMode: Observable<Bool> {
+        let switchControl = mainView.challengeModeSwitch
+        return switchControl.rx.controlEvent(.valueChanged).withLatestFrom(switchControl.rx.value)
+    }
+    
     public func fillWithButtonColor() {
         mainView.backgroundColor = mainView.changeBGColorButton.backgroundColor
         
@@ -41,6 +46,35 @@ public class MagiColorScreenViewController: UIViewController {
         mainView.tutorialLabel.text = text
     }
     
+    public func updateToTutorialMode() {
+        setTutorialText("Tutorial mode!")
+        mainView.hidingLabelPosition = .normal
+        mainView.challengeModePad.isHidden = true
+        mainView.challengeModeSwitch.isOn = false
+    }
+    
+    public func updateToMainMode() {
+        setTutorialText(nil)
+        mainView.hidingLabelPosition = .normal
+        mainView.challengeModePad.isHidden = false
+        mainView.challengeModeSwitch.isOn = false
+    }
+    
+    public func updateToChallengeMode() {
+        self.resetColors()
+        setTutorialText(nil)
+        mainView.challengeModePad.isHidden = false
+        mainView.challengeModeSwitch.isOn = true
+    }
+    
+    public func setHidingLabelPositionTop() {
+        mainView.hidingLabelPosition = .top
+    }
+    
+    public func setHidingLabelPositionBottom() {
+        mainView.hidingLabelPosition = .bottom
+    }
+
     let mainView = MagiColorScreenView()
     let disposeBag = DisposeBag()
 }
@@ -53,6 +87,6 @@ extension MagiColorScreenViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        resetColors()
+        self.resetColors()
     }
 }

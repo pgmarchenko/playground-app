@@ -36,6 +36,9 @@
 		B0657AE6D44E1D13A7BCFFFC /* Pods_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E0A4612B7569B334064D5D /* Pods_UI.framework */; };
 		D562D18AEC3C29796960733F /* Pods_Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B27FB85937831C4C5C55A7F /* Pods_Utilities.framework */; };
 		E2F1742FE2D17D48817FD682 /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E4E02702773BA0A44F24AD /* Pods_App.framework */; };
+		FA8ECDDD21D8EB4700C728DD /* ThirdTabScreenInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8ECDDC21D8EB4700C728DD /* ThirdTabScreenInteractions.swift */; };
+		FA99237321D8D32E00CD3BC0 /* ThirdTabScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99237221D8D32E00CD3BC0 /* ThirdTabScreenViewController.swift */; };
+		FA99237521D8D34300CD3BC0 /* ThirdTabScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99237421D8D34300CD3BC0 /* ThirdTabScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +112,9 @@
 		B8E3CF4786BFA5C17934DAF1 /* Pods-PlaygroundApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaygroundApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlaygroundApp/Pods-PlaygroundApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B8E4E02702773BA0A44F24AD /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD6AE7439421278BA115A36 /* Pods-PlaygroundApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaygroundApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlaygroundApp/Pods-PlaygroundApp.release.xcconfig"; sourceTree = "<group>"; };
+		FA8ECDDC21D8EB4700C728DD /* ThirdTabScreenInteractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTabScreenInteractions.swift; sourceTree = "<group>"; };
+		FA99237221D8D32E00CD3BC0 /* ThirdTabScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTabScreenViewController.swift; sourceTree = "<group>"; };
+		FA99237421D8D34300CD3BC0 /* ThirdTabScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTabScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +209,7 @@
 				7F756C6F21662ED80018EB83 /* Info.plist */,
 				7F756C7821662EF40018EB83 /* MagiColorScreenInteractions.swift */,
 				7F756C852166311C0018EB83 /* DownloadScreenInteractions.swift */,
+				FA8ECDDC21D8EB4700C728DD /* ThirdTabScreenInteractions.swift */,
 				7F445A4F21663B8500B121BF /* MenuScreenInteractions.swift */,
 			);
 			path = App;
@@ -229,6 +236,7 @@
 		7F9858372163934800E922A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				FA99237121D8D2F100CD3BC0 /* ThirdTabScreen */,
 				7F445A512166439E00B121BF /* AdsFakeScreen */,
 				7F756C87216631510018EB83 /* DownloadScreen */,
 				7F756C7A21662F1F0018EB83 /* MagiColorScreen */,
@@ -290,6 +298,15 @@
 				B8E4E02702773BA0A44F24AD /* Pods_App.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA99237121D8D2F100CD3BC0 /* ThirdTabScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FA99237421D8D34300CD3BC0 /* ThirdTabScreenView.swift */,
+				FA99237221D8D32E00CD3BC0 /* ThirdTabScreenViewController.swift */,
+			);
+			path = ThirdTabScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -654,6 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8ECDDD21D8EB4700C728DD /* ThirdTabScreenInteractions.swift in Sources */,
 				7F756C862166311C0018EB83 /* DownloadScreenInteractions.swift in Sources */,
 				7F445A5021663B8500B121BF /* MenuScreenInteractions.swift in Sources */,
 				7F756C7921662EF40018EB83 /* MagiColorScreenInteractions.swift in Sources */,
@@ -670,6 +688,8 @@
 				7F756C8221662F830018EB83 /* MagiColorsScreenViewController.swift in Sources */,
 				7F756C8F2166319A0018EB83 /* DownloadScreenView.swift in Sources */,
 				7F445A55216643CF00B121BF /* AdsFakeScreenViewController.swift in Sources */,
+				FA99237321D8D32E00CD3BC0 /* ThirdTabScreenViewController.swift in Sources */,
+				FA99237521D8D34300CD3BC0 /* ThirdTabScreenView.swift in Sources */,
 				7F985846216393E900E922A6 /* MenuScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,7 +25,46 @@ extension MagiColorScreenViewController {
             }.disposed(by: disposer)
         
         self.onTutorialClicked.bind(disposing: disposer) { disposer, _ in
-            self.setTutorialText("Tutorial mode!")
+            self.updateToTutorialMode()
+            self.assembleTutorialInteractions(with: disposer)
+            }
+        
+        self.challengeMode.bind(disposing: disposer) { disposer, isEnabled in
+            guard isEnabled else {
+                assertionFailure("should not be called")
+                return
+            }
+            self.updateToChallengeMode()
+            self.assembleChallengeInteractions(with: disposer)
+            }
+    }
+    
+    public func assembleChallengeInteractions(with disposer: CompositeDisposable) {
+        self.onChangeBGColorClicked.throttle(0.2, scheduler: MainScheduler.instance).bind {
+            
+            if arc4random_uniform(2) == 0 {
+                self.setHidingLabelPositionTop()
+            } else {
+                self.setHidingLabelPositionBottom()
+            }
+            
+            self.fillWithButtonColor()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.resetColors()
+            }
+            }.disposed(by: disposer)
+        
+        self.challengeMode.bind(disposing: disposer) { disposer, isEnabled in
+            guard !isEnabled else {
+                assertionFailure("should not be called")
+                return
+            }
+            self.updateToMainMode()
+            self.assembleMainInteractions(with: disposer)
+            }
+        
+        self.onTutorialClicked.bind(disposing: disposer) { disposer, _ in
+            self.updateToTutorialMode()
             self.assembleTutorialInteractions(with: disposer)
         }
     }
@@ -40,7 +79,7 @@ extension MagiColorScreenViewController {
             }.disposed(by: disposer)
         
         self.onTutorialClicked.bind(disposing: disposer) { disposer, _ in
-            self.setTutorialText(nil)
+            self.updateToMainMode()
             self.assembleMainInteractions(with: disposer)
         }
     }

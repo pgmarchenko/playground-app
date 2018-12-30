@@ -5,5 +5,6 @@
         <page name='DownloadScreen'/>
         <page name='MagiColorsScreen'/>
         <page name='AdsFakeScreen'/>
+        <page name='ThirdTabScreen'/>
     </pages>
 </playground>

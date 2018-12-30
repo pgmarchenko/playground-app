@@ -16,10 +16,13 @@ public class MenuScreenViewController: UITabBarController {
         downloadScreen.tabBarItem = UITabBarItem.init(title: "Download", image: nil, selectedImage: nil)
         
         magiColorScreen.tabBarItem = UITabBarItem.init(title: "MagiColor", image: nil, selectedImage: nil)
-        
-        viewControllers = [downloadScreen, magiColorScreen]
+
+        thirdTabScreen.tabBarItem = UITabBarItem.init(title: "Third Tab", image: nil, selectedImage: nil)
+
+        viewControllers = [downloadScreen, magiColorScreen, thirdTabScreen]
     }
     
     public let downloadScreen = DownloadScreenViewController()
     public let magiColorScreen = MagiColorScreenViewController()
+    public let thirdTabScreen = ThirdTabScreenViewController()
 }

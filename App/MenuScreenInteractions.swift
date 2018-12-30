@@ -17,10 +17,20 @@ extension MenuScreenViewController {
     public func assembleInterations(with topDisposer: CompositeDisposable = .init()) {
         self.magiColorScreen.assembleMainInteractions()
         
+        let thirdScreenInteractor = self.thirdTabScreen.assembleInteractions()
+        thirdScreenInteractor.onOpenFirstTab.bind {
+            self.selectedIndex = 0
+        }.disposed(by: topDisposer)
+
         let downloadInteractor = self.downloadScreen.assembleInteractions()
-        
         downloadInteractor.onOpen.bind {
             self.selectedIndex = 1
+        }.disposed(by: topDisposer)
+        
+        self.rx.didSelect.bind { vc in
+            if vc !== self.thirdTabScreen {
+                thirdScreenInteractor.onDeactivate.onNext(())
+            }
         }.disposed(by: topDisposer)
     }
 }
