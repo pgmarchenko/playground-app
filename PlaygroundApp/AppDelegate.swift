@@ -10,12 +10,16 @@ import UIKit
 
 import UI
 import App
+import AppFlow
+import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let appFlow = AppFlow()
+    let appDisposeBag = DisposeBag()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -25,7 +29,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
-
+        
+        defer { appFlow.dispatch(DownloadScreen.Showed()) }
+        
+        rootVC.rx.didSelect
+            .bind { vc in
+                switch vc {
+                case _ as DownloadScreenViewController:
+                    self.appFlow.dispatch(DownloadScreen.Showed())
+                case _ as MagiColorScreenViewController:
+                    self.appFlow.dispatch(MagiColorScreen.Showed())
+                default:
+                    break
+                }
+            }.disposed(by: appDisposeBag)
+        
+        rootVC.downloadScreen.onDownloadAndOpenClicked
+            .map { _ in DownloadScreen.DownloadAndOpen() }
+            .bind(onNext: appFlow.dispatch)
+            .disposed(by: appDisposeBag)
+        
+        rootVC.downloadScreen.onCancelDownloadClicked
+            .map { _ in DownloadScreen.DownloadingCancelled() }
+            .bind(onNext: appFlow.dispatch)
+            .disposed(by: appDisposeBag)
+        
+        appFlow.onCommand(DownloadWaitingOverlay.Show.self) { cmd in
+            rootVC.downloadScreen.showWaitingOverlay()
+            rootVC.downloadScreen.showRetry(false)
+        }
+        
+        appFlow.onCommand(DownloadWaitingOverlay.Hide.self) { cmd in
+            rootVC.downloadScreen.showWaitingOverlay(false)
+        }
+        
+        
+        rootVC.magiColorScreen.onChangeBGColorClicked
+            .map { _ in MagiColorScreen.RedButtonTouched() }
+            .bind(onNext: appFlow.dispatch)
+            .disposed(by: appDisposeBag)
+        
+        rootVC.magiColorScreen.onResetColorsClicked
+            .map { _ in MagiColorScreen.ResetButtonTouched() }
+            .bind(onNext: appFlow.dispatch)
+            .disposed(by: appDisposeBag)
+        
+        appFlow.onCommand(MagiColorScreen.SetRedMode.self) { cmd in
+            rootVC.magiColorScreen.fillWithButtonColor()
+        }
+        
+        appFlow.onCommand(MagiColorScreen.SetWhiteMode.self) { cmd in
+            rootVC.magiColorScreen.resetColors()
+        }
+//        let downloadInteractor = rootVC.downloadScreen.assembleInteractions()
+        
+//        downloadInteractor.onOpen.bind {
+//            self.selectedIndex = 1
+//            }.disposed(by: topDisposer)
+        
         return true
     }
 

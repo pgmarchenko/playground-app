@@ -1,32 +1,59 @@
 PODS:
   - DeviceScreenViewController (0.1.3)
-  - RxCocoa (4.3.1):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.3.1)
+  - Nimble (8.0.1)
+  - Quick (2.1.0)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
   - SnapKit (4.0.1)
 
 DEPENDENCIES:
   - DeviceScreenViewController (from `https://github.com/pgmarchenko/DeviceScreenViewController.git`, tag `0.1.3`)
-  - RxCocoa (~> 4.0)
-  - RxSwift (~> 4.0)
+  - Nimble
+  - Quick
+  - RxCocoa (from `https://github.com/beathead-team/RxSwift.git`)
+  - RxSwift (from `https://github.com/beathead-team/RxSwift.git`)
   - SnapKit (~> 4.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Nimble
+    - Quick
+    - RxRelay
+    - SnapKit
 
 EXTERNAL SOURCES:
   DeviceScreenViewController:
     :git: https://github.com/pgmarchenko/DeviceScreenViewController.git
     :tag: 0.1.3
+  RxCocoa:
+    :git: https://github.com/beathead-team/RxSwift.git
+  RxSwift:
+    :git: https://github.com/beathead-team/RxSwift.git
 
 CHECKOUT OPTIONS:
   DeviceScreenViewController:
     :git: https://github.com/pgmarchenko/DeviceScreenViewController.git
     :tag: 0.1.3
+  RxCocoa:
+    :commit: 86c3c8cc2d8c4959105c67db7a8675238f521618
+    :git: https://github.com/beathead-team/RxSwift.git
+  RxSwift:
+    :commit: 86c3c8cc2d8c4959105c67db7a8675238f521618
+    :git: https://github.com/beathead-team/RxSwift.git
 
 SPEC CHECKSUMS:
   DeviceScreenViewController: cd35158448fd9e7b3217f4ef98c8f0bb1d8361af
-  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
-  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
+  Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: 4f4239e8742d97e1f69a39c663b7602777e212a6
+PODFILE CHECKSUM: 7fe2aefbadc709b79a70e6e6939d574459d2d67f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.7.0

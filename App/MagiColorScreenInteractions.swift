@@ -16,18 +16,18 @@ import Utilities
 
 extension MagiColorScreenViewController {
     public func assembleMainInteractions(with disposer: CompositeDisposable = CompositeDisposable()) {
-        self.onChangeBGColorClicked.bind {
-            self.fillWithButtonColor()
-            }.disposed(by: disposer)
-        
-        self.onResetColorsClicked.bind {
-            self.resetColors()
-            }.disposed(by: disposer)
-        
-        self.onTutorialClicked.bind(disposing: disposer) { disposer, _ in
-            self.setTutorialText("Tutorial mode!")
-            self.assembleTutorialInteractions(with: disposer)
-        }
+//        self.onChangeBGColorClicked.bind {
+//            self.fillWithButtonColor()
+//            }.disposed(by: disposer)
+//        
+//        self.onResetColorsClicked.bind {
+//            self.resetColors()
+//            }.disposed(by: disposer)
+//        
+//        self.onTutorialClicked.bind(disposing: disposer) { disposer, _ in
+//            self.setTutorialText("Tutorial mode!")
+//            self.assembleTutorialInteractions(with: disposer)
+//        }
     }
     
     public func assembleTutorialInteractions(with disposer: CompositeDisposable) {
