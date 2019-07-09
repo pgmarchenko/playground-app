@@ -20,23 +20,16 @@ class MagiColorScreenFlowTests: QuickSpec {
             let flow = MagiColorScreenFlow(record: true)
             
             expectFlow(flow, [
-                (
-                    onEvents: [
+                onEvents(
+                    [
                         MagiColorScreen.RedButtonTouched(),
                     ],
                     commands: [
                         MagiColorScreen.SetRedMode()
                     ]
                 ),
-                (
-                    onEvents: [
-                        MagiColorScreen.RedButtonTouched(),
-                    ],
-                    commands: [
-                    ]
-                ),
-                (
-                    onEvents: [
+                onEvents(
+                    [
                         MagiColorScreen.ResetButtonTouched(),
                     ],
                     commands: [
@@ -46,59 +39,53 @@ class MagiColorScreenFlowTests: QuickSpec {
             ])
         }
         
-        describe("Tutorial") {
+        describe("Tutorial for red button") {
             let flow = MagiColorScreenFlow(record: true)
             
             expectFlow(flow, [
-                (
-                    onEvents: [
-                        MagiColorScreen.TutorialSwitcherTouched()
-                    ],
-                    commands: [
-                        MagiColorScreen.SetTutorialTitle("Tutorial mode!")
-                    ]
-                ),
-                (
-                    onEvents: [
+                onEvents(
+                    [
+                        MagiColorScreen.TutorialSwitcherTouched(),
                         MagiColorScreen.RedButtonTouched(),
-                    ],
-                    commands: [
-                        MagiColorScreen.SetTutorialTitle("Will change background color to self color")
-                    ]
-                ),
-                (
-                    onEvents: [
                         MagiColorScreen.TutorialSwitcherTouched()
                     ],
                     commands: [
+                        MagiColorScreen.SetTutorialTitle("Tutorial mode!"),
+                        MagiColorScreen.SetTutorialTitle("Will change background color to self color"),
                         MagiColorScreen.SetTutorialTitle(nil)
-                    ]
-                ),
-                (
-                    onEvents: [
-                        MagiColorScreen.RedButtonTouched()
-                    ],
-                    commands: [
-                        MagiColorScreen.SetRedMode()
-                    ]
-                ),
-                (
-                    onEvents: [
-                        MagiColorScreen.TutorialSwitcherTouched()
-                    ],
-                    commands: [
-                        MagiColorScreen.SetTutorialTitle("Tutorial mode!")
-                    ]
-                ),
-                (
-                    onEvents: [
-                        MagiColorScreen.ResetButtonTouched()
-                    ],
-                    commands: [
-                        MagiColorScreen.SetTutorialTitle("Will change colors back")
                     ]
                 )
             ])
+        }
+        
+        describe("Tutorial for reset button") {
+            let flow = MagiColorScreenFlow(record: true)
+            
+            expectFlow(flow, [
+                onEvents(
+                    [
+                        MagiColorScreen.RedButtonTouched(),
+                        MagiColorScreen.TutorialSwitcherTouched(),
+                        MagiColorScreen.ResetButtonTouched(),
+                        MagiColorScreen.TutorialSwitcherTouched()
+                    ],
+                    commands: [
+                        MagiColorScreen.SetRedMode(),
+                        MagiColorScreen.SetTutorialTitle("Tutorial mode!"),
+                        MagiColorScreen.SetTutorialTitle("Will change colors back"),
+                        MagiColorScreen.SetTutorialTitle(nil)
+                    ]
+                ),
+                onEvents(
+                    [
+                        MagiColorScreen.ResetButtonTouched()
+                    ],
+                    commands: [
+                        MagiColorScreen.SetWhiteMode()
+                    ]
+                )
+                ]
+            )
         }
     }
 }

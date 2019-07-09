@@ -8,78 +8,46 @@
 
 import Foundation
 
-public enum DownloadScreen {}
-
-public extension DownloadScreen {
-    struct Showed: FeatureFlowEvent { public init() {} }
-    
-    struct DownloadAndOpen: FeatureFlowEvent { public init() {} }
-    struct OpenForVideo: FeatureFlowEvent { public init() {} }
-    
-    struct DownloadingCancelled: FeatureFlowEvent { public init() {} }
-}
-
-public enum MagiColorScreen {}
-
-public extension MagiColorScreen {
-    struct Showed: FeatureFlowEvent { public init() {} }
-    
-    struct RedButtonTouched: FeatureFlowEvent { public init() {} }
-    struct ResetButtonTouched: FeatureFlowEvent { public init() {} }
-    
-    struct TutorialSwitcherTouched: FeatureFlowEvent { public init() {} }
-}
-
 public class DownloadAndOpenFlow: FeatureFlow {
-    public override init(record: Bool = true) {
-        super.init(record: record)
+    public override func reset() {
+        super.reset()
         
-        assembleInitialHandlers()
+        waitSingleEvent(handleDownloadAndOpen)
     }
 }
 
 private extension DownloadAndOpenFlow {
-    func assembleInitialHandlers() {
-        waitSingleEvent(handleDownloadAndOpen)
-    }
-    
-    func handleDownloadAndOpen(_ it: DownloadScreen.DownloadAndOpen) {
+    func handleDownloadAndOpen(_: DownloadScreen.DownloadAndOpen) {
         output(DownloadWaitingOverlay.Show())
+        output(Downloading.Start())
         
         removeHandlers()
+        waitEvents(handleDownloadProgress)
         waitSingleEvent(handleDownloadCancelled)
+        waitSingleEvent(handleDownloadFailed)
+        
+        waitSingleEvent { (event: Downloading.Succeeded) in
+            self.output(DownloadWaitingOverlay.Hide())
+            self.output(MagiColorScreen.Show())
+            
+            self.reset()
+        }
     }
     
-    func handleDownloadCancelled(_ it: DownloadScreen.DownloadingCancelled) {
+    func handleDownloadCancelled(_: DownloadScreen.DownloadingCancelled) {
+        output(DownloadWaitingOverlay.Hide())
+        output(Downloading.Cancel())
+        
+        reset()
+    }
+    
+    func handleDownloadFailed(_: Downloading.Failed) {
         output(DownloadWaitingOverlay.Hide())
         
-        removeHandlers()
-        assembleInitialHandlers()
+        reset()
     }
-}
-
-
-public enum DownloadWaitingOverlay { }
-
-public extension DownloadWaitingOverlay {
-    struct Show: FeatureFlowCommand, Equatable { public init() {} }
     
-    struct ShowRetry: FeatureFlowCommand, Equatable { public init() {} }
-    struct HideRetry: FeatureFlowCommand, Equatable { public init() {} }
-    
-    struct Hide: FeatureFlowCommand, Equatable { public init() {} }
-}
-
-
-public extension MagiColorScreen {
-    struct SetRedMode: FeatureFlowCommand, Equatable { public init() {} }
-    struct SetWhiteMode: FeatureFlowCommand, Equatable { public init() {} }
-    
-    struct SetTutorialTitle: FeatureFlowCommand, Equatable {
-        public let title: String?
-        
-        public init(_ title: String?) {
-            self.title = title
-        }
+    func handleDownloadProgress(_ event: Downloading.Progress) {
+        output(DownloadWaitingOverlay.ShowProgress(current: event.current, total: event.total))
     }
 }

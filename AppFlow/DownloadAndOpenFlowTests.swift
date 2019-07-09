@@ -24,7 +24,8 @@ class DownloadAndOpenFlowTests: QuickSpec {
                 flow.dispatch(DownloadScreen.DownloadAndOpen())
                 
                 expect(flow.popRecordedCommands()) == [
-                    DownloadWaitingOverlay.Show()
+                    DownloadWaitingOverlay.Show(),
+                    Downloading.Start()
                 ]
             }
             
@@ -35,10 +36,54 @@ class DownloadAndOpenFlowTests: QuickSpec {
                 
                 it("Hides waitings overlay") {
                     expect(flow.popRecordedCommands()) == [
-                        DownloadWaitingOverlay.Hide()
+                        DownloadWaitingOverlay.Hide(),
+                        Downloading.Cancel()
                     ]
                 }
             }
+        }
+        
+        describe("Download with progress") {
+            let flow = DownloadAndOpenFlow(record: true)
+            
+            expectFlow(flow, [
+                onEvents([
+                        DownloadScreen.DownloadAndOpen()
+                    ],
+                    commands: [
+                        DownloadWaitingOverlay.Show(),
+                        Downloading.Start()
+                    ]
+                ),
+                branches(
+                    [
+                        onEvents([
+                            Downloading.Progress(current: 10, total: 100)
+                            ],
+                                 commands: [
+                                    DownloadWaitingOverlay.ShowProgress(current: 10, total: 100)
+                            ]
+                        ),
+                        onEvents([
+                            Downloading.Succeeded()
+                            ], commands: [
+                                DownloadWaitingOverlay.Hide(),
+                                MagiColorScreen.Show()
+                            ]
+                        )
+                    ],
+                    [
+                        onEvents([
+                                Downloading.Failed()
+                            ],
+                            commands: [
+                                DownloadWaitingOverlay.Hide()
+                            ]
+                        )
+                    ]
+                )
+                
+            ])
         }
     }
 }

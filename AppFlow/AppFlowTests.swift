@@ -20,64 +20,66 @@ class AppFlowTests: QuickSpec {
             let flow = AppFlow(record: true)
             
             expectFlow(flow, [
-                (
-                    onEvents: [
-                        DownloadScreen.Showed(),
+                onEvents(
+                    [
+                        DownloadScreen.DidAppear(),
                     ],
                     commands: [
                         MagiColorScreen.SetWhiteMode()
                     ]
                 ),
-                (
-                    onEvents: [
+                onEvents(
+                    [
                         DownloadScreen.DownloadAndOpen()
                     ],
                     commands: [
-                        DownloadWaitingOverlay.Show()
+                        DownloadWaitingOverlay.Show(),
+                        Downloading.Start()
                     ]
                 ),
-                (
-                    onEvents: [
+                onEvents(
+                    [
                         DownloadScreen.DownloadingCancelled()
                     ],
                     commands: [
-                        DownloadWaitingOverlay.Hide()
+                        DownloadWaitingOverlay.Hide(),
+                        Downloading.Cancel()
                     ]
                 ),
-                (
-                    onEvents: [
-                        MagiColorScreen.Showed(),
+                onEvents(
+                    [
+                        MagiColorScreen.DidAppear(),
                     ],
                     commands: [
                         DownloadWaitingOverlay.Hide()
                     ]
                 ),
-                (
-                    onEvents: [
+                onEvents(
+                    [
                         MagiColorScreen.RedButtonTouched()
                     ],
                     commands: [
                         MagiColorScreen.SetRedMode()
                     ]
                 ),
-                (
-                    onEvents: [
+                onEvents(
+                    [
                         MagiColorScreen.ResetButtonTouched()
                     ],
                     commands: [
                         MagiColorScreen.SetWhiteMode()
                     ]
                 ),
-                (
-                    onEvents: [
-                        DownloadScreen.Showed(),
+                onEvents(
+                    [
+                        DownloadScreen.DidAppear(),
                     ],
                     commands: [
                         MagiColorScreen.SetWhiteMode()
                     ]
                 ),
-                (
-                    onEvents: [
+                onEvents(
+                    [
                         MagiColorScreen.RedButtonTouched(),
                         MagiColorScreen.ResetButtonTouched()
                     ],
@@ -85,12 +87,13 @@ class AppFlowTests: QuickSpec {
                         // должны быть проигнорированы
                     ]
                 ),
-                (
-                    onEvents: [
+                onEvents(
+                    [
                         DownloadScreen.DownloadAndOpen()
                     ],
                     commands: [
-                        DownloadWaitingOverlay.Show()
+                        DownloadWaitingOverlay.Show(),
+                        Downloading.Start()
                     ]
                 )
                 

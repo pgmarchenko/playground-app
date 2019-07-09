@@ -12,25 +12,22 @@ public class MagiColorScreenFlow: FeatureFlow {
     public override func reset() {
         super.reset()
         
-        waitSingleEvent(handleRedButtonTouched)
+        waitEvents(handleRedButtonTouched)
+        waitEvents(handleResetButtonTouched)
         waitEvents(handleTutorialTouched)
     }
 }
 
 private extension MagiColorScreenFlow {
-    func handleRedButtonTouched(_ event: MagiColorScreen.RedButtonTouched) {
+    func handleRedButtonTouched(_: MagiColorScreen.RedButtonTouched) {
         output(MagiColorScreen.SetRedMode())
-        
-        waitSingleEvent(handleResetButtonTouched)
     }
     
-    func handleResetButtonTouched(_ event: MagiColorScreen.ResetButtonTouched) {
+    func handleResetButtonTouched(_: MagiColorScreen.ResetButtonTouched) {
         output(MagiColorScreen.SetWhiteMode())
-        
-        reset()
     }
     
-    func handleTutorialTouched(_ event: MagiColorScreen.TutorialSwitcherTouched) {
+    func handleTutorialTouched(_: MagiColorScreen.TutorialSwitcherTouched) {
         removeHandlers()
         
         output(MagiColorScreen.SetTutorialTitle("Tutorial mode!"))
@@ -41,17 +38,17 @@ private extension MagiColorScreenFlow {
         waitSingleEvent(handleFinishTutorial)
     }
     
-    func handleFinishTutorial(_ event: MagiColorScreen.TutorialSwitcherTouched) {
+    func handleFinishTutorial(_: MagiColorScreen.TutorialSwitcherTouched) {
         output(MagiColorScreen.SetTutorialTitle(nil))
         
         reset()
     }
     
-    func handleRedButtonTutorial(_ event: MagiColorScreen.RedButtonTouched) {
+    func handleRedButtonTutorial(_: MagiColorScreen.RedButtonTouched) {
         output(MagiColorScreen.SetTutorialTitle("Will change background color to self color"))
     }
     
-    func handleResetColorsButtonTutorial(_ event: MagiColorScreen.ResetButtonTouched) {
+    func handleResetColorsButtonTutorial(_: MagiColorScreen.ResetButtonTouched) {
         output(MagiColorScreen.SetTutorialTitle("Will change colors back"))
     }
 }

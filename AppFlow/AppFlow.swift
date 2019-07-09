@@ -12,13 +12,13 @@ public class AppFlow: FeatureFlow {
     public override func reset() {
         super.reset()
         
-        waitEvents(handleDownloadScreenShowed)
-        waitEvents(handleMagiColorScreenShowed)
+        waitEvents(handleDownloadScreenDidAppear)
+        waitEvents(handleMagiColorScreenDidAppear)
     }
 }
 
 private extension AppFlow {
-    func handleDownloadScreenShowed(_ it: DownloadScreen.Showed) {
+    func handleDownloadScreenDidAppear(_: DownloadScreen.DidAppear) {
         removeAllChildFlows()
         
         output(MagiColorScreen.SetWhiteMode())
@@ -26,7 +26,7 @@ private extension AppFlow {
         addChildFlow(DownloadAndOpenFlow())
     }
     
-    func handleMagiColorScreenShowed(_ it: MagiColorScreen.Showed) {
+    func handleMagiColorScreenDidAppear(_: MagiColorScreen.DidAppear) {
         removeAllChildFlows()
         
         output(DownloadWaitingOverlay.Hide())

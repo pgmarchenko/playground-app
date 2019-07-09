@@ -14,34 +14,6 @@ import RxCocoa
 import UI
 import Utilities
 
-public func delayOnMain(_ delay: Double, closure:@escaping () -> Void) {
-    DispatchQueue.main.asyncAfter(
-        deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
-}
-
-public class DownloadService {
-    public let onProgress = PublishSubject<(current: Double, total: Double)>()
-    public let onSuccess = PublishSubject<()>()
-    public let onError = PublishSubject<Error>()
-    
-    public struct DownloadUnknownError: Error { }
-    
-    public func download() {
-        let success = arc4random_uniform(2) == 0
-        
-        delayOnMain(1) {
-            if success {
-                self.onSuccess.onNext(())
-            } else {
-                self.onError.onNext(DownloadUnknownError())
-            }
-        }
-    }
-    
-    public func cancel() {
-        
-    }
-}
 
 public class DownloadScreenInteractor {
     public let onOpen = PublishSubject<()>()

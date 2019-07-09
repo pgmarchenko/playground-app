@@ -14,10 +14,14 @@
 		7F11CB9A22D39C6700BB8212 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CB9922D39C6700BB8212 /* TestHelper.swift */; };
 		7F11CB9D22D49C3A00BB8212 /* MagiColorScreenFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CB9C22D49C3A00BB8212 /* MagiColorScreenFlow.swift */; };
 		7F11CB9F22D4B63300BB8212 /* MagiColorScreenFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CB9E22D4B63300BB8212 /* MagiColorScreenFlowTests.swift */; };
+		7F11CBA122D5FE3F00BB8212 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBA022D5FE3F00BB8212 /* DownloadService.swift */; };
+		7F11CBAA22D621E000BB8212 /* DownloadScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBA922D621E000BB8212 /* DownloadScreen.swift */; };
+		7F11CBAC22D6222100BB8212 /* MagiColorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBAB22D6222100BB8212 /* MagiColorScreen.swift */; };
+		7F11CBAE22D6225F00BB8212 /* Downloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBAD22D6225F00BB8212 /* Downloading.swift */; };
+		7F11CBB022D6228F00BB8212 /* DownloadWaitingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBAF22D6228F00BB8212 /* DownloadWaitingOverlay.swift */; };
 		7F22410721638F2B001B53B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22410621638F2B001B53B2 /* AppDelegate.swift */; };
 		7F22410E21638F2C001B53B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410D21638F2C001B53B2 /* Assets.xcassets */; };
 		7F22411121638F2C001B53B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410F21638F2C001B53B2 /* LaunchScreen.storyboard */; };
-		7F445A5021663B8500B121BF /* MenuScreenInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F445A4F21663B8500B121BF /* MenuScreenInteractions.swift */; };
 		7F445A53216643BF00B121BF /* AdsFakeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F445A52216643BF00B121BF /* AdsFakeScreenView.swift */; };
 		7F445A55216643CF00B121BF /* AdsFakeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F445A54216643CF00B121BF /* AdsFakeScreenViewController.swift */; };
 		7F5CADB922BE174C0013C3EE /* AppFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5CADB022BE174C0013C3EE /* AppFlow.framework */; };
@@ -31,12 +35,10 @@
 		7F756C7021662ED80018EB83 /* App.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F756C6E21662ED80018EB83 /* App.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F756C7321662ED80018EB83 /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F756C6C21662ED70018EB83 /* App.framework */; };
 		7F756C7421662ED80018EB83 /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7F756C6C21662ED70018EB83 /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7F756C7921662EF40018EB83 /* MagiColorScreenInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F756C7821662EF40018EB83 /* MagiColorScreenInteractions.swift */; };
 		7F756C8121662F830018EB83 /* MagiColorsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F756C7F21662F830018EB83 /* MagiColorsScreenView.swift */; };
 		7F756C8221662F830018EB83 /* MagiColorsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F756C8021662F830018EB83 /* MagiColorsScreenViewController.swift */; };
 		7F756C8321662FCB0018EB83 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9858362163934800E922A6 /* UI.framework */; };
 		7F756C8421662FCB0018EB83 /* Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB3CB9F2166149000A5A622 /* Utilities.framework */; };
-		7F756C862166311C0018EB83 /* DownloadScreenInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F756C852166311C0018EB83 /* DownloadScreenInteractions.swift */; };
 		7F756C8E2166319A0018EB83 /* DownloadScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F756C8C2166319A0018EB83 /* DownloadScreenViewController.swift */; };
 		7F756C8F2166319A0018EB83 /* DownloadScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F756C8D2166319A0018EB83 /* DownloadScreenView.swift */; };
 		7F98583A2163934800E922A6 /* UI.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F9858382163934800E922A6 /* UI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -121,12 +123,16 @@
 		7F11CB9922D39C6700BB8212 /* TestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		7F11CB9C22D49C3A00BB8212 /* MagiColorScreenFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagiColorScreenFlow.swift; sourceTree = "<group>"; };
 		7F11CB9E22D4B63300BB8212 /* MagiColorScreenFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagiColorScreenFlowTests.swift; sourceTree = "<group>"; };
+		7F11CBA022D5FE3F00BB8212 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
+		7F11CBA922D621E000BB8212 /* DownloadScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreen.swift; sourceTree = "<group>"; };
+		7F11CBAB22D6222100BB8212 /* MagiColorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagiColorScreen.swift; sourceTree = "<group>"; };
+		7F11CBAD22D6225F00BB8212 /* Downloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloading.swift; sourceTree = "<group>"; };
+		7F11CBAF22D6228F00BB8212 /* DownloadWaitingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadWaitingOverlay.swift; sourceTree = "<group>"; };
 		7F22410321638F2A001B53B2 /* PlaygroundApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaygroundApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F22410621638F2B001B53B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F22410D21638F2C001B53B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F22411021638F2C001B53B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F22411221638F2C001B53B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F445A4F21663B8500B121BF /* MenuScreenInteractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenInteractions.swift; sourceTree = "<group>"; };
 		7F445A52216643BF00B121BF /* AdsFakeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsFakeScreenView.swift; sourceTree = "<group>"; };
 		7F445A54216643CF00B121BF /* AdsFakeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsFakeScreenViewController.swift; sourceTree = "<group>"; };
 		7F5CADB022BE174C0013C3EE /* AppFlow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppFlow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,10 +147,8 @@
 		7F756C6C21662ED70018EB83 /* App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F756C6E21662ED80018EB83 /* App.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
 		7F756C6F21662ED80018EB83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F756C7821662EF40018EB83 /* MagiColorScreenInteractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagiColorScreenInteractions.swift; sourceTree = "<group>"; };
 		7F756C7F21662F830018EB83 /* MagiColorsScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagiColorsScreenView.swift; sourceTree = "<group>"; };
 		7F756C8021662F830018EB83 /* MagiColorsScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagiColorsScreenViewController.swift; sourceTree = "<group>"; };
-		7F756C852166311C0018EB83 /* DownloadScreenInteractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreenInteractions.swift; sourceTree = "<group>"; };
 		7F756C8C2166319A0018EB83 /* DownloadScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadScreenViewController.swift; sourceTree = "<group>"; };
 		7F756C8D2166319A0018EB83 /* DownloadScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadScreenView.swift; sourceTree = "<group>"; };
 		7F9858362163934800E922A6 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +243,17 @@
 			path = FeatureFlow;
 			sourceTree = "<group>";
 		};
+		7F11CBA822D621BA00BB8212 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				7F11CBA922D621E000BB8212 /* DownloadScreen.swift */,
+				7F11CBAB22D6222100BB8212 /* MagiColorScreen.swift */,
+				7F11CBAD22D6225F00BB8212 /* Downloading.swift */,
+				7F11CBAF22D6228F00BB8212 /* DownloadWaitingOverlay.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		7F2240FA21638F2A001B53B2 = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +305,7 @@
 		7F5CADB122BE174C0013C3EE /* AppFlow */ = {
 			isa = PBXGroup;
 			children = (
+				7F11CBA822D621BA00BB8212 /* Entities */,
 				7F11CB9B22D497BC00BB8212 /* FeatureFlow */,
 				7F5CADCF22BE1A7E0013C3EE /* AppFlow.swift */,
 				7F5CADBF22BE174C0013C3EE /* AppFlowTests.swift */,
@@ -317,9 +333,7 @@
 			children = (
 				7F756C6E21662ED80018EB83 /* App.h */,
 				7F756C6F21662ED80018EB83 /* Info.plist */,
-				7F756C7821662EF40018EB83 /* MagiColorScreenInteractions.swift */,
-				7F756C852166311C0018EB83 /* DownloadScreenInteractions.swift */,
-				7F445A4F21663B8500B121BF /* MenuScreenInteractions.swift */,
+				7F11CBA022D5FE3F00BB8212 /* DownloadService.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -840,8 +854,12 @@
 			files = (
 				7F11CB9822D39AE600BB8212 /* FeatureFlowEvent.swift in Sources */,
 				7F11CB9D22D49C3A00BB8212 /* MagiColorScreenFlow.swift in Sources */,
+				7F11CBAC22D6222100BB8212 /* MagiColorScreen.swift in Sources */,
+				7F11CBB022D6228F00BB8212 /* DownloadWaitingOverlay.swift in Sources */,
 				7F11CB9622D39AE600BB8212 /* FeatureFlow.swift in Sources */,
 				7F5CADD222BE1B1B0013C3EE /* DownloadAndOpenFlow.swift in Sources */,
+				7F11CBAE22D6225F00BB8212 /* Downloading.swift in Sources */,
+				7F11CBAA22D621E000BB8212 /* DownloadScreen.swift in Sources */,
 				7F11CB9722D39AE600BB8212 /* Array+FeatureFlowCommand.swift in Sources */,
 				7F5CADD022BE1A7E0013C3EE /* AppFlow.swift in Sources */,
 			);
@@ -862,9 +880,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F756C862166311C0018EB83 /* DownloadScreenInteractions.swift in Sources */,
-				7F445A5021663B8500B121BF /* MenuScreenInteractions.swift in Sources */,
-				7F756C7921662EF40018EB83 /* MagiColorScreenInteractions.swift in Sources */,
+				7F11CBA122D5FE3F00BB8212 /* DownloadService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

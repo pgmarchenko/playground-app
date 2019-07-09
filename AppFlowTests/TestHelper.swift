@@ -48,9 +48,9 @@ func == (lhs: Expectation<[FeatureFlowCommand]>, other: [FeatureFlowCommand]) {
 }
 
 
-typealias ExpectationTuple = ([FeatureFlowEvent], [FeatureFlowCommand])
+typealias ExpectationTuple = ([FeatureFlowEvent], [FeatureFlowCommand], FileString, UInt)
 
-func expectFlow(_ flow: FeatureFlow, _ expectations: Any, resetFlowBeforeEach: Bool = true) {
+func expectFlow(_ flow: FeatureFlow, _ expectations: Any, resetFlowBeforeEach: Bool = true, file: FileString = #file, line: UInt = #line) {
     if resetFlowBeforeEach {
         beforeEach {
             flow.reset()
@@ -61,7 +61,7 @@ func expectFlow(_ flow: FeatureFlow, _ expectations: Any, resetFlowBeforeEach: B
         guard let e = expectations.first else { return }
         
         switch e {
-        case (let events, let commands) as ExpectationTuple:
+        case (let events, let commands, let expFile, let expLine) as ExpectationTuple:
             context("\(events)") {
                 beforeEach {
                     flow.popRecordedCommands()
@@ -70,19 +70,38 @@ func expectFlow(_ flow: FeatureFlow, _ expectations: Any, resetFlowBeforeEach: B
                 }
                 
                 it("\(commands)") {
-                    expect(flow.popRecordedCommands()) == commands
+                    expect(flow.popRecordedCommands(), file: expFile, line: expLine) == commands
                 }
                 
-                expectFlow(flow, Array(expectations.dropFirst()), resetFlowBeforeEach: false)
+                expectFlow(flow, Array(expectations.dropFirst()), resetFlowBeforeEach: false, file: expFile, line: expLine)
             }
         case let expectations as [[Any]]:
             expectations.forEach {
                 debugPrint("Branch")
-                expectFlow(flow, $0, resetFlowBeforeEach: false)
+                expectFlow(flow, $0, resetFlowBeforeEach: false, file: file, line: line)
             }
         default:
             debugPrint("!!!Unknown expectation!!! \(e)")
         }
     }
     
+}
+
+
+func onEvents(
+    _ events: [FeatureFlowEvent],
+    commands: [FeatureFlowCommand],
+    file: FileString = #file,
+    line: UInt = #line
+) -> ExpectationTuple {
+    return (
+        events,
+        commands,
+        file,
+        line
+    )
+}
+
+func branches(_ branches: Any...) -> [Any] {
+    return branches
 }
