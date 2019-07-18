@@ -22,12 +22,32 @@ public extension Downloading {
         }
     }
     
-    struct Succeeded: FeatureFlowEvent { public init() {} }
-    struct Failed: FeatureFlowEvent { public init() {} }
+    struct Succeeded: FeatureFlowEvent {
+        public let presetId: String
+        
+        public init(presetId: String) {
+            self.presetId = presetId
+        }
+    }
+    
+    struct Failed: FeatureFlowEvent {
+        public let presetId: String
+        
+        public init(presetId: String) {
+            self.presetId = presetId
+        }
+    }
 }
 
 
 public extension Downloading {
-    struct Start: FeatureFlowCommand, Equatable { public init() {} }
+    struct Start: FeatureFlowCommand, Equatable {
+        public let presetId: String
+        
+        public init(presetId: String) {
+            self.presetId = presetId
+        }
+    }
+    
     struct Cancel: FeatureFlowCommand, Equatable { public init() {} }
 }

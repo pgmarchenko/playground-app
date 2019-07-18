@@ -59,6 +59,17 @@ open class FeatureFlow {
         return onCommand(handler)
     }
     
+    public func attachListenerFlow(_ flow: FeatureFlow) {
+        input
+            .bind(to: flow.input)
+            .disposed(by: flow.disposeBag)
+        
+        output
+            .map { $0 as FeatureFlowAction }
+            .bind(to: flow.input)
+            .disposed(by: flow.disposeBag)
+    }
+    
     // MARK: - для наследников
     
     open func reset() {
@@ -107,6 +118,16 @@ open class FeatureFlow {
         return takeActions(handler)
             .disposed(by: inputDisposeBag)
     }
+    
+    public func waitSingleAction<Action: FeatureFlowAction>(_ handler: @escaping (Action) -> Void) {
+        return takeActions(count: 1, handler)
+            .disposed(by: inputDisposeBag)
+    }
+    
+    public func waitActions<Action: FeatureFlowAction>(_ handler: @escaping(Action) -> Void) {
+        return takeActions(handler)
+            .disposed(by: inputDisposeBag)
+    }
 
     public func removeHandlers() {
         inputDisposeBag = DisposeBag()
@@ -129,7 +150,7 @@ open class FeatureFlow {
 
     public let disposeBag = DisposeBag()
 
-    let input = PublishSubject<FeatureFlowEvent>()
+    let input = PublishSubject<FeatureFlowAction>()
     let tickInput = PublishSubject<FeatureFlowEvent>()
     // Сомневаюсь, стоит ли вообще его оставлять наружу
     // Пока кажется, что с помощью onOutput решатся все потребности
@@ -147,13 +168,12 @@ open class FeatureFlow {
 }
 
 public extension FeatureFlow {
-    fileprivate func takeActions<Action: FeatureFlowEvent>(count: Int? = nil, _ handler: @escaping (Action) -> Void) -> Disposable {
+    fileprivate func takeActions<Action: FeatureFlowAction>(count: Int? = nil, _ handler: @escaping (Action) -> Void) -> Disposable {
         
         let filteredInput = input
-            .debug()
             .filter { $0 is Action }
         
-        let trimmedInput: Observable<FeatureFlowEvent> = {
+        let trimmedInput: Observable<FeatureFlowAction> = {
             if let count = count {
                 return filteredInput
                     .take(count)
@@ -169,17 +189,16 @@ public extension FeatureFlow {
             })
     }
     
-    fileprivate func processInput(_ input: FeatureFlowEvent) {
-        childFlows.forEach { $0.dispatch(input) }
+    fileprivate func processInput(_ input: FeatureFlowAction) {
+        childFlows.forEach { $0.input.onNext(input) }
     }
     
-    fileprivate func processInput(_ handler: @escaping (FeatureFlowEvent) -> Void) -> Disposable {
+    fileprivate func processInput(_ handler: @escaping (FeatureFlowAction) -> Void) -> Disposable {
         return input.bind(onNext: handler)
     }
     
     fileprivate func onCommand<Action: FeatureFlowCommand>(_ handler: @escaping (Action) -> Void) {
         return output
-            .debug()
             .filter { $0 is Action }
             .map { $0 as! Action }
             .subscribe(

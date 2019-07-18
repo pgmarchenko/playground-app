@@ -8,9 +8,11 @@
 
 import Foundation
 
-public protocol FeatureFlowEvent {}
+public protocol FeatureFlowAction {}
 
-public protocol FeatureFlowCommand {
+public protocol FeatureFlowEvent: FeatureFlowAction {}
+
+public protocol FeatureFlowCommand: FeatureFlowAction {
     func isEqualTo(_ other: FeatureFlowCommand) -> Bool
     func asEquatable() -> AnyEquatableAction
 }

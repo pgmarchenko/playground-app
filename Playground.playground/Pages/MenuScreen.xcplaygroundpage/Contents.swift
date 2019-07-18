@@ -7,15 +7,19 @@ import DeviceScreenViewController
 import App
 import UI
 
-let menuVC = MenuScreenViewController()
+class Foo {
+    
+    func print(_ v: Int) {
+        
+    }
+    
+    func print(_ v: String) {
+        
+    }
+}
 
-let (deviceVC, vc) = deviceScreenViewController(
-    device: .pad,
-    orientation: .portrait,
-    child: menuVC,
-    showStatusBar: true
-)
+let f = Foo()
 
-menuVC.assembleInterations()
+let fa = f as AnyObject
 
-PlaygroundPage.current.liveView = deviceVC
+fa.print?(10)

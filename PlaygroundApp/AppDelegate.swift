@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     let appFlow = AppFlow()
+    let analyticsFlow = AnalyticsMiddleWare()
+    
     let downloadService = DownloadService()
     let appDisposeBag = DisposeBag()
 
@@ -43,7 +45,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .disposed(by: appDisposeBag)
         
         rootVC.downloadScreen.onDownloadAndOpenClicked
-            .map { _ in DownloadScreen.DownloadAndOpen() }
+            .map { _ in DownloadScreen.DownloadAndOpen(
+                id: "test_id",
+                premium: true,
+                isFree: false
+                )
+            }
             .bind(onNext: appFlow.dispatch)
             .disposed(by: appDisposeBag)
         
@@ -59,12 +66,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .disposed(by: appDisposeBag)
         
         downloadService.onSuccess
-            .map { Downloading.Succeeded() }
+            .map { Downloading.Succeeded(presetId: "test_id") }
             .bind(onNext: appFlow.dispatch)
             .disposed(by: appDisposeBag)
         
         downloadService.onError
-            .map { _ in Downloading.Failed() }
+            .map { _ in Downloading.Failed(presetId: "test_id") }
             .bind(onNext: appFlow.dispatch)
             .disposed(by: appDisposeBag)
         
@@ -81,43 +88,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.downloadService.cancel()
         }
         
-        appFlow.onCommand(DownloadWaitingOverlay.ShowProgress.self) { cmd in
-            debugPrint("\(cmd.current) / \(cmd.total)")
-        }
+        assembleMagicColorEvents(vc: rootVC.magiColorScreen)
+        assembleMagicColorCommands(vc: rootVC.magiColorScreen)
+        
         
         appFlow.onCommand(MagiColorScreen.Show.self) { _ in
             rootVC.selectedIndex = 1
         }
         
-        rootVC.magiColorScreen.onChangeBGColorClicked
+        
+        
+        appFlow.attachListenerFlow(analyticsFlow)
+        assembleAnalytics()
+        
+        return true
+    }
+}
+
+extension AppDelegate {
+    private func assembleAnalytics() {
+        analyticsFlow
+            .onCommand(Analytics.LogEvent<String>.self) { cmd in
+                debugPrint("\(cmd.name) \(cmd.params)")
+            }
+        
+        
+    }
+    
+    private func assembleMagicColorEvents(vc: MagiColorScreenViewController) {
+        vc.onChangeBGColorClicked
             .map { _ in MagiColorScreen.RedButtonTouched() }
             .bind(onNext: appFlow.dispatch)
             .disposed(by: appDisposeBag)
         
-        rootVC.magiColorScreen.onResetColorsClicked
+        vc.onResetColorsClicked
             .map { _ in MagiColorScreen.ResetButtonTouched() }
             .bind(onNext: appFlow.dispatch)
             .disposed(by: appDisposeBag)
         
-        rootVC.magiColorScreen.onTutorialClicked
+        vc.onTutorialClicked
             .map { _ in MagiColorScreen.TutorialSwitcherTouched() }
             .bind(onNext: appFlow.dispatch)
             .disposed(by: appDisposeBag)
-        
-        
+    }
+    
+    private func assembleMagicColorCommands(vc: MagiColorScreenViewController) {
         appFlow.onCommand(MagiColorScreen.SetRedMode.self) { _ in
-            rootVC.magiColorScreen.fillWithButtonColor()
+            vc.fillWithButtonColor()
         }
         
         appFlow.onCommand(MagiColorScreen.SetWhiteMode.self) { _ in
-            rootVC.magiColorScreen.resetColors()
+            vc.resetColors()
         }
         
         appFlow.onCommand(MagiColorScreen.SetTutorialTitle.self) { cmd in
-            rootVC.magiColorScreen.setTutorialText(cmd.title)
+            vc.setTutorialText(cmd.title)
         }
-        
-        return true
     }
 }
 

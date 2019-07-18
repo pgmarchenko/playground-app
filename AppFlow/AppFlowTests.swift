@@ -21,21 +21,16 @@ class AppFlowTests: QuickSpec {
             
             expectFlow(flow, [
                 onEvents(
-                    [
-                        DownloadScreen.DidAppear(),
-                    ],
+                    startingEvents,
                     commands: [
                         MagiColorScreen.SetWhiteMode()
                     ]
                 ),
                 onEvents(
                     [
-                        DownloadScreen.DownloadAndOpen()
+                        DownloadScreen.DownloadAndOpen(id: "test", premium: false, isFree: true)
                     ],
-                    commands: [
-                        DownloadWaitingOverlay.Show(),
-                        Downloading.Start()
-                    ]
+                    commands: downloadingCommands(presetId: "test")
                 ),
                 onEvents(
                     [
@@ -89,12 +84,9 @@ class AppFlowTests: QuickSpec {
                 ),
                 onEvents(
                     [
-                        DownloadScreen.DownloadAndOpen()
+                        DownloadScreen.DownloadAndOpen(id: "test", premium: false, isFree: true)
                     ],
-                    commands: [
-                        DownloadWaitingOverlay.Show(),
-                        Downloading.Start()
-                    ]
+                    commands: downloadingCommands(presetId: "test")
                 )
                 
 //                branches(
@@ -117,3 +109,17 @@ class AppFlowTests: QuickSpec {
         }
     }
 }
+
+let startingEvents = [
+    DownloadScreen.DidAppear()
+]
+
+func downloadingCommands(presetId: String) -> [FeatureFlowCommand] {
+    return [
+        DownloadWaitingOverlay.Show(),
+        Downloading.Start(presetId: presetId)
+    ]
+}
+
+
+// сбор данных, цепочки зависимостей, на примере урока битскул 

@@ -19,6 +19,8 @@
 		7F11CBAC22D6222100BB8212 /* MagiColorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBAB22D6222100BB8212 /* MagiColorScreen.swift */; };
 		7F11CBAE22D6225F00BB8212 /* Downloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBAD22D6225F00BB8212 /* Downloading.swift */; };
 		7F11CBB022D6228F00BB8212 /* DownloadWaitingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBAF22D6228F00BB8212 /* DownloadWaitingOverlay.swift */; };
+		7F11CBB222D6311C00BB8212 /* AnalyticsMiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBB122D6311C00BB8212 /* AnalyticsMiddleWare.swift */; };
+		7F11CBB422D7206E00BB8212 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBB322D7206E00BB8212 /* Analytics.swift */; };
 		7F22410721638F2B001B53B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22410621638F2B001B53B2 /* AppDelegate.swift */; };
 		7F22410E21638F2C001B53B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410D21638F2C001B53B2 /* Assets.xcassets */; };
 		7F22411121638F2C001B53B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410F21638F2C001B53B2 /* LaunchScreen.storyboard */; };
@@ -128,6 +130,8 @@
 		7F11CBAB22D6222100BB8212 /* MagiColorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagiColorScreen.swift; sourceTree = "<group>"; };
 		7F11CBAD22D6225F00BB8212 /* Downloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloading.swift; sourceTree = "<group>"; };
 		7F11CBAF22D6228F00BB8212 /* DownloadWaitingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadWaitingOverlay.swift; sourceTree = "<group>"; };
+		7F11CBB122D6311C00BB8212 /* AnalyticsMiddleWare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsMiddleWare.swift; sourceTree = "<group>"; };
+		7F11CBB322D7206E00BB8212 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		7F22410321638F2A001B53B2 /* PlaygroundApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaygroundApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F22410621638F2B001B53B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F22410D21638F2C001B53B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 				7F11CBAB22D6222100BB8212 /* MagiColorScreen.swift */,
 				7F11CBAD22D6225F00BB8212 /* Downloading.swift */,
 				7F11CBAF22D6228F00BB8212 /* DownloadWaitingOverlay.swift */,
+				7F11CBB322D7206E00BB8212 /* Analytics.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				7F5CADD322BE1FCE0013C3EE /* DownloadAndOpenFlowTests.swift */,
 				7F11CB9C22D49C3A00BB8212 /* MagiColorScreenFlow.swift */,
 				7F11CB9E22D4B63300BB8212 /* MagiColorScreenFlowTests.swift */,
+				7F11CBB122D6311C00BB8212 /* AnalyticsMiddleWare.swift */,
 			);
 			path = AppFlow;
 			sourceTree = "<group>";
@@ -854,10 +860,12 @@
 			files = (
 				7F11CB9822D39AE600BB8212 /* FeatureFlowEvent.swift in Sources */,
 				7F11CB9D22D49C3A00BB8212 /* MagiColorScreenFlow.swift in Sources */,
+				7F11CBB422D7206E00BB8212 /* Analytics.swift in Sources */,
 				7F11CBAC22D6222100BB8212 /* MagiColorScreen.swift in Sources */,
 				7F11CBB022D6228F00BB8212 /* DownloadWaitingOverlay.swift in Sources */,
 				7F11CB9622D39AE600BB8212 /* FeatureFlow.swift in Sources */,
 				7F5CADD222BE1B1B0013C3EE /* DownloadAndOpenFlow.swift in Sources */,
+				7F11CBB222D6311C00BB8212 /* AnalyticsMiddleWare.swift in Sources */,
 				7F11CBAE22D6225F00BB8212 /* Downloading.swift in Sources */,
 				7F11CBAA22D621E000BB8212 /* DownloadScreen.swift in Sources */,
 				7F11CB9722D39AE600BB8212 /* Array+FeatureFlowCommand.swift in Sources */,

@@ -21,11 +21,11 @@ class DownloadAndOpenFlowTests: QuickSpec {
             
             beforeEach {
                 flow = DownloadAndOpenFlow(record: true)
-                flow.dispatch(DownloadScreen.DownloadAndOpen())
+                flow.dispatch(DownloadScreen.DownloadAndOpen(id: "test", premium: false, isFree: true))
                 
                 expect(flow.popRecordedCommands()) == [
                     DownloadWaitingOverlay.Show(),
-                    Downloading.Start()
+                    Downloading.Start(presetId: "test")
                 ]
             }
             
@@ -48,11 +48,11 @@ class DownloadAndOpenFlowTests: QuickSpec {
             
             expectFlow(flow, [
                 onEvents([
-                        DownloadScreen.DownloadAndOpen()
+                        DownloadScreen.DownloadAndOpen(id: "test", premium: false, isFree: true)
                     ],
                     commands: [
                         DownloadWaitingOverlay.Show(),
-                        Downloading.Start()
+                        Downloading.Start(presetId: "test")
                     ]
                 ),
                 branches(
@@ -65,7 +65,7 @@ class DownloadAndOpenFlowTests: QuickSpec {
                             ]
                         ),
                         onEvents([
-                            Downloading.Succeeded()
+                            Downloading.Succeeded(presetId: "test")
                             ], commands: [
                                 DownloadWaitingOverlay.Hide(),
                                 MagiColorScreen.Show()
@@ -74,7 +74,7 @@ class DownloadAndOpenFlowTests: QuickSpec {
                     ],
                     [
                         onEvents([
-                                Downloading.Failed()
+                                Downloading.Failed(presetId: "test")
                             ],
                             commands: [
                                 DownloadWaitingOverlay.Hide()

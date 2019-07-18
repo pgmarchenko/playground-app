@@ -17,9 +17,9 @@ public class DownloadAndOpenFlow: FeatureFlow {
 }
 
 private extension DownloadAndOpenFlow {
-    func handleDownloadAndOpen(_: DownloadScreen.DownloadAndOpen) {
+    func handleDownloadAndOpen(event: DownloadScreen.DownloadAndOpen) {
         output(DownloadWaitingOverlay.Show())
-        output(Downloading.Start())
+        output(Downloading.Start(presetId: event.id))
         
         removeHandlers()
         waitEvents(handleDownloadProgress)
