@@ -59,15 +59,12 @@ open class FeatureFlow {
         return onCommand(handler)
     }
     
-    public func attachListenerFlow(_ flow: FeatureFlow) {
-        input
-            .bind(to: flow.input)
-            .disposed(by: flow.disposeBag)
+    
+    public func onAction<Action: FeatureFlowAction>(_ Action: Action.Type, _ handler: @escaping (Action) -> Void) {
+        outputIsProcessing = true
+        defer { outputIsProcessing = false }
         
-        output
-            .map { $0 as FeatureFlowAction }
-            .bind(to: flow.input)
-            .disposed(by: flow.disposeBag)
+        return onAction(handler)
     }
     
     // MARK: - для наследников
@@ -150,16 +147,11 @@ open class FeatureFlow {
 
     public let disposeBag = DisposeBag()
 
-    let input = PublishSubject<FeatureFlowAction>()
-    let tickInput = PublishSubject<FeatureFlowEvent>()
-    // Сомневаюсь, стоит ли вообще его оставлять наружу
-    // Пока кажется, что с помощью onOutput решатся все потребности
-    let output = PublishSubject<FeatureFlowCommand>()
-    let finished = PublishSubject<FeatureFlowEvent>()
+    private let input = PublishSubject<FeatureFlowAction>()
+    private let output = PublishSubject<FeatureFlowCommand>()
 
     private var childFlows = [FeatureFlow]()
     private var inputDisposeBag = DisposeBag()
-    
     
     // debug helper
     private var outputIsProcessing = false
@@ -197,8 +189,26 @@ public extension FeatureFlow {
         return input.bind(onNext: handler)
     }
     
-    fileprivate func onCommand<Action: FeatureFlowCommand>(_ handler: @escaping (Action) -> Void) {
+    fileprivate func onCommand<Command: FeatureFlowCommand>(_ handler: @escaping (Command) -> Void) {
         return output
+            .filter { $0 is Command }
+            .map { $0 as! Command }
+            .subscribe(
+                onNext: { a in
+                    handler(a)
+            },
+                onDisposed: {
+                    debugPrint("Disposed!")
+            }
+            )
+            .disposed(by: disposeBag)
+    }
+    
+    fileprivate func onAction<Action: FeatureFlowAction>(_ handler: @escaping (Action) -> Void) {
+        return Observable.merge(
+                input.map{ $0 as FeatureFlowAction },
+                output.map{ $0 as FeatureFlowAction }
+            )
             .filter { $0 is Action }
             .map { $0 as! Action }
             .subscribe(

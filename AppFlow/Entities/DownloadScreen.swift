@@ -13,6 +13,7 @@ public enum DownloadScreen {}
 
 public extension DownloadScreen {
     struct DidAppear: FeatureFlowEvent { public init() {} }
+    struct DidDisappear: FeatureFlowEvent { public init() {} }
     
     struct DownloadAndOpen: FeatureFlowEvent {
         public let premium: Bool

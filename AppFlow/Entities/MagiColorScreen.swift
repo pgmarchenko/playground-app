@@ -13,6 +13,7 @@ public enum MagiColorScreen {}
 
 public extension MagiColorScreen {
     struct DidAppear: FeatureFlowEvent { public init() {} }
+    struct DidDisappear: FeatureFlowEvent { public init() {} }
     
     struct RedButtonTouched: FeatureFlowEvent { public init() {} }
     struct ResetButtonTouched: FeatureFlowEvent { public init() {} }

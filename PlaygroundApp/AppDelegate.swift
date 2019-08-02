@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     let appFlow = AppFlow()
-    let analyticsFlow = AnalyticsMiddleWare()
+    let analyticsFlow = AnalyticsFlow()
     
     let downloadService = DownloadService()
     let appDisposeBag = DisposeBag()
@@ -32,15 +32,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         
-        defer { appFlow.dispatch(DownloadScreen.DidAppear()) }
-        
         rootVC.downloadScreen.rx.viewDidAppear
             .map { _ in DownloadScreen.DidAppear() }
             .bind(onNext: appFlow.dispatch)
             .disposed(by: appDisposeBag)
         
+        rootVC.downloadScreen.rx.viewDidDisappear
+            .map { _ in DownloadScreen.DidDisappear() }
+            .bind(onNext: appFlow.dispatch)
+            .disposed(by: appDisposeBag)
+        
         rootVC.magiColorScreen.rx.viewDidAppear
             .map { _ in MagiColorScreen.DidAppear() }
+            .bind(onNext: appFlow.dispatch)
+            .disposed(by: appDisposeBag)
+        
+        rootVC.magiColorScreen.rx.viewDidDisappear
+            .map { _ in MagiColorScreen.DidDisappear() }
             .bind(onNext: appFlow.dispatch)
             .disposed(by: appDisposeBag)
         
@@ -96,9 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rootVC.selectedIndex = 1
         }
         
-        
-        
-        appFlow.attachListenerFlow(analyticsFlow)
         assembleAnalytics()
         
         return true
@@ -107,12 +112,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     private func assembleAnalytics() {
+        assembleDownloadingAnalytics()
+        assembleScreenTimeAnalytics()
+        
         analyticsFlow
-            .onCommand(Analytics.LogEvent<String>.self) { cmd in
+            .onCommand(Analytics.LogEvent.self) { cmd in
                 debugPrint("\(cmd.name) \(cmd.params)")
             }
+    }
+    
+    private func assembleDownloadingAnalytics() {
+        appFlow.onAction(Downloading.Start.self) {
+            self.analyticsFlow.dispatch(AnalyticsEvent(
+                $0,
+                params: TimeParams(time: Date().timeIntervalSince1970)
+            ))
+        }
         
+        appFlow.onAction(Downloading.Succeeded.self) {
+            self.analyticsFlow.dispatch(AnalyticsEvent(
+                $0,
+                params: TimeParams(time: Date().timeIntervalSince1970)
+            ))
+        }
         
+        appFlow.onAction(Downloading.Failed.self) {
+            self.analyticsFlow.dispatch(AnalyticsEvent(
+                $0,
+                params: TimeParams(time: Date().timeIntervalSince1970)
+            ))
+        }
+        
+        appFlow.onAction(Downloading.Cancel.self, {
+            self.analyticsFlow.dispatch(AnalyticsEvent(
+                $0,
+                params: TimeParams(time: Date().timeIntervalSince1970)
+            ))
+        })
+    }
+    
+    private func assembleScreenTimeAnalytics() {
+        appFlow.onAction(DownloadScreen.DidAppear.self) {
+            self.analyticsFlow.dispatch(AnalyticsEvent(
+                $0,
+                params: TimeParams(time: Date().timeIntervalSince1970)
+            ))
+        }
+        
+        appFlow.onAction(DownloadScreen.DidDisappear.self) {
+            self.analyticsFlow.dispatch(AnalyticsEvent(
+                $0,
+                params: TimeParams(time: Date().timeIntervalSince1970)
+            ))
+        }
     }
     
     private func assembleMagicColorEvents(vc: MagiColorScreenViewController) {

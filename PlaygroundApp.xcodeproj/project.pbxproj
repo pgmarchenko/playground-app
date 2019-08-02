@@ -19,7 +19,7 @@
 		7F11CBAC22D6222100BB8212 /* MagiColorScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBAB22D6222100BB8212 /* MagiColorScreen.swift */; };
 		7F11CBAE22D6225F00BB8212 /* Downloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBAD22D6225F00BB8212 /* Downloading.swift */; };
 		7F11CBB022D6228F00BB8212 /* DownloadWaitingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBAF22D6228F00BB8212 /* DownloadWaitingOverlay.swift */; };
-		7F11CBB222D6311C00BB8212 /* AnalyticsMiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBB122D6311C00BB8212 /* AnalyticsMiddleWare.swift */; };
+		7F11CBB222D6311C00BB8212 /* AnalyticsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBB122D6311C00BB8212 /* AnalyticsFlow.swift */; };
 		7F11CBB422D7206E00BB8212 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBB322D7206E00BB8212 /* Analytics.swift */; };
 		7F22410721638F2B001B53B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22410621638F2B001B53B2 /* AppDelegate.swift */; };
 		7F22410E21638F2C001B53B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410D21638F2C001B53B2 /* Assets.xcassets */; };
@@ -51,6 +51,8 @@
 		7FB3CBAE216614F900A5A622 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3CBAD216614F900A5A622 /* Curry.swift */; };
 		7FB3CBAF2166152400A5A622 /* Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB3CB9F2166149000A5A622 /* Utilities.framework */; };
 		7FB3CBB12166158800A5A622 /* RxSwiftBindDisposing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB3CBB02166158800A5A622 /* RxSwiftBindDisposing.swift */; };
+		7FDFDD5822E093F60081CF81 /* AnalyticsEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFDD5722E093F60081CF81 /* AnalyticsEvents.swift */; };
+		7FDFDD5A22E094070081CF81 /* AnalyticsCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDFDD5922E094070081CF81 /* AnalyticsCommands.swift */; };
 		845FADCBEAD2E5AEAA5E586D /* Pods_AppFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969AD638C68A50FBEDC872F9 /* Pods_AppFlow.framework */; };
 		8C18C92D88D2695FA30E0803 /* Pods_AppFlowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BEC7337A6AD24C685F821 /* Pods_AppFlowTests.framework */; };
 		B0657AE6D44E1D13A7BCFFFC /* Pods_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E0A4612B7569B334064D5D /* Pods_UI.framework */; };
@@ -130,7 +132,7 @@
 		7F11CBAB22D6222100BB8212 /* MagiColorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagiColorScreen.swift; sourceTree = "<group>"; };
 		7F11CBAD22D6225F00BB8212 /* Downloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloading.swift; sourceTree = "<group>"; };
 		7F11CBAF22D6228F00BB8212 /* DownloadWaitingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadWaitingOverlay.swift; sourceTree = "<group>"; };
-		7F11CBB122D6311C00BB8212 /* AnalyticsMiddleWare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsMiddleWare.swift; sourceTree = "<group>"; };
+		7F11CBB122D6311C00BB8212 /* AnalyticsFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsFlow.swift; sourceTree = "<group>"; };
 		7F11CBB322D7206E00BB8212 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		7F22410321638F2A001B53B2 /* PlaygroundApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaygroundApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F22410621638F2B001B53B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,8 @@
 		7FB3CBA22166149000A5A622 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FB3CBAD216614F900A5A622 /* Curry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curry.swift; sourceTree = "<group>"; };
 		7FB3CBB02166158800A5A622 /* RxSwiftBindDisposing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftBindDisposing.swift; sourceTree = "<group>"; };
+		7FDFDD5722E093F60081CF81 /* AnalyticsEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvents.swift; sourceTree = "<group>"; };
+		7FDFDD5922E094070081CF81 /* AnalyticsCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCommands.swift; sourceTree = "<group>"; };
 		88E0A4612B7569B334064D5D /* Pods_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9BEC7337A6AD24C685F821 /* Pods_AppFlowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppFlowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB96B205CC109EF5693AAE5 /* Pods-Utilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utilities.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Utilities/Pods-Utilities.debug.xcconfig"; sourceTree = "<group>"; };
@@ -310,8 +314,9 @@
 		7F5CADB122BE174C0013C3EE /* AppFlow */ = {
 			isa = PBXGroup;
 			children = (
-				7F11CBA822D621BA00BB8212 /* Entities */,
 				7F11CB9B22D497BC00BB8212 /* FeatureFlow */,
+				7F11CBA822D621BA00BB8212 /* Entities */,
+				7FDFDD5622E08E810081CF81 /* Analytics */,
 				7F5CADCF22BE1A7E0013C3EE /* AppFlow.swift */,
 				7F5CADBF22BE174C0013C3EE /* AppFlowTests.swift */,
 				7F5CADB222BE174C0013C3EE /* AppFlow.h */,
@@ -320,7 +325,6 @@
 				7F5CADD322BE1FCE0013C3EE /* DownloadAndOpenFlowTests.swift */,
 				7F11CB9C22D49C3A00BB8212 /* MagiColorScreenFlow.swift */,
 				7F11CB9E22D4B63300BB8212 /* MagiColorScreenFlowTests.swift */,
-				7F11CBB122D6311C00BB8212 /* AnalyticsMiddleWare.swift */,
 			);
 			path = AppFlow;
 			sourceTree = "<group>";
@@ -400,6 +404,16 @@
 				7FB3CBB02166158800A5A622 /* RxSwiftBindDisposing.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		7FDFDD5622E08E810081CF81 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				7FDFDD5722E093F60081CF81 /* AnalyticsEvents.swift */,
+				7FDFDD5922E094070081CF81 /* AnalyticsCommands.swift */,
+				7F11CBB122D6311C00BB8212 /* AnalyticsFlow.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		A0392DF055C8951C2164A174 /* Pods */ = {
@@ -862,12 +876,14 @@
 				7F11CB9D22D49C3A00BB8212 /* MagiColorScreenFlow.swift in Sources */,
 				7F11CBB422D7206E00BB8212 /* Analytics.swift in Sources */,
 				7F11CBAC22D6222100BB8212 /* MagiColorScreen.swift in Sources */,
+				7FDFDD5A22E094070081CF81 /* AnalyticsCommands.swift in Sources */,
 				7F11CBB022D6228F00BB8212 /* DownloadWaitingOverlay.swift in Sources */,
 				7F11CB9622D39AE600BB8212 /* FeatureFlow.swift in Sources */,
 				7F5CADD222BE1B1B0013C3EE /* DownloadAndOpenFlow.swift in Sources */,
-				7F11CBB222D6311C00BB8212 /* AnalyticsMiddleWare.swift in Sources */,
+				7F11CBB222D6311C00BB8212 /* AnalyticsFlow.swift in Sources */,
 				7F11CBAE22D6225F00BB8212 /* Downloading.swift in Sources */,
 				7F11CBAA22D621E000BB8212 /* DownloadScreen.swift in Sources */,
+				7FDFDD5822E093F60081CF81 /* AnalyticsEvents.swift in Sources */,
 				7F11CB9722D39AE600BB8212 /* Array+FeatureFlowCommand.swift in Sources */,
 				7F5CADD022BE1A7E0013C3EE /* AppFlow.swift in Sources */,
 			);
