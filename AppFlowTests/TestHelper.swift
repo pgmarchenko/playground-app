@@ -13,6 +13,7 @@ import Quick
 import Nimble
 
 import AppFlow
+import AppEntities
 
 public func beEqual(_ expectedValue: [FeatureFlowCommand]) -> Predicate<[FeatureFlowCommand]> {
     return Predicate.define("equal <\(stringify(expectedValue))>") { actualExpression, msg in

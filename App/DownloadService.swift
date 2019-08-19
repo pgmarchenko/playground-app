@@ -10,6 +10,7 @@ import Foundation
 
 import RxSwift
 import RxCocoa
+import AppEntities
 
 public func delayOnMain(_ delay: Double, closure:@escaping () -> Void) {
     DispatchQueue.main.asyncAfter(
@@ -17,15 +18,30 @@ public func delayOnMain(_ delay: Double, closure:@escaping () -> Void) {
 }
 
 public class DownloadService {
-    public let onProgress = PublishSubject<(current: Double, total: Double)>()
-    public let onSuccess = PublishSubject<()>()
-    public let onError = PublishSubject<Error>()
+    public let events = PublishSubject<FeatureFlowEvent>()
+    
+    public func dispatchCommand(_ cmd: FeatureFlowCommand) {
+        switch cmd {
+        case is Downloading.Start:
+            download()
+        case is Downloading.Cancel:
+            cancel()
+        default:
+            break
+        }
+    }
     
     public struct DownloadUnknownError: Error { }
     
-    public init() { }
+    public init() {
+    }
     
-    public func download() {
+    private var progressDisposeBag = DisposeBag()
+}
+
+
+extension DownloadService {
+    func download() {
         let success = arc4random_uniform(2) == 0
         let responseTime = Double(arc4random_uniform(3) + 1)
         
@@ -35,25 +51,23 @@ public class DownloadService {
             Observable<Int>.interval(.milliseconds(10), scheduler: MainScheduler.instance)
                 .take(Int(total))
                 .bind { interval in
-                    self.onProgress.onNext((Double(interval), total))
+                    self.events.onNext(Downloading.Progress(current: Double(interval), total: total))
                 }
                 .disposed(by: progressDisposeBag)
         }
         
         delayOnMain(responseTime) {
             if success {
-                self.onSuccess.onNext(())
+                self.events.onNext(Downloading.Succeeded())
             } else {
-                self.onError.onNext(DownloadUnknownError())
+                self.events.onNext(Downloading.Failed())
             }
             
             self.progressDisposeBag = DisposeBag()
         }
     }
     
-    public func cancel() {
+    func cancel() {
         progressDisposeBag = DisposeBag()
     }
-    
-    private var progressDisposeBag = DisposeBag()
 }

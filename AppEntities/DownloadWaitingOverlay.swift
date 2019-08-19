@@ -8,15 +8,13 @@
 
 import Foundation
 
-public enum DownloadWaitingOverlay {}
+public struct DownloadWaitingOverlay: UIEntity, Equatable { public init() {} }
 
 public extension DownloadWaitingOverlay {
-    
+    struct Retry: FeatureFlowEvent { public init() {} }
 }
 
 public extension DownloadWaitingOverlay {
-    struct Show: FeatureFlowCommand, Equatable { public init() {} }
-    
     struct ShowRetry: FeatureFlowCommand, Equatable { public init() {} }
     struct HideRetry: FeatureFlowCommand, Equatable { public init() {} }
     
@@ -29,6 +27,4 @@ public extension DownloadWaitingOverlay {
             self.total = total
         }
     }
-    
-    struct Hide: FeatureFlowCommand, Equatable { public init() {} }
 }

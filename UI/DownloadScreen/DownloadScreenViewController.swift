@@ -4,27 +4,25 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+import AppEntities
+
 public class DownloadScreenViewController: UIViewController {
-    public var onDownloadAndOpenClicked: ControlEvent<()> {
-        return mainView.downloadAndOpenButton.rx.controlEvent(.touchUpInside)
-    }
+    public let events = PublishSubject<FeatureFlowEvent>()
     
-    public var onCancelDownloadClicked: ControlEvent<()> {
-        return mainView.cancelWaitingButton.rx.controlEvent(.touchUpInside)
-    }
-    
-    public var onRetryDownloadClicked: ControlEvent<()> {
-        return mainView.retryButton.rx.controlEvent(.touchUpInside)
-    }
-    
-    public func showWaitingOverlay(_ show: Bool = true) {
-        mainView.waitingOverlayView.isHidden = !show
-    }
-    
-    public func showRetry(_ show: Bool = true) {
-        debugPrint(#function)
-        mainView.cancelWaitingButton.isHidden = show
-        mainView.retryButton.isHidden = !show
+    public func dispatchCommand(_ cmd: FeatureFlowCommand) {
+        switch cmd {
+        case is UI.Show<DownloadWaitingOverlay>:
+            showWaitingOverlay()
+            showRetry(false)
+        case is UI.Hide<DownloadWaitingOverlay>:
+            showWaitingOverlay(false)
+        case is DownloadWaitingOverlay.ShowRetry:
+            showRetry()
+        case is DownloadWaitingOverlay.HideRetry:
+            showRetry(false)
+        default:
+            break
+        }
     }
     
     let mainView = DownloadScreenView()
@@ -39,6 +37,32 @@ extension DownloadScreenViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.downloadAndOpenButton.rx.controlEvent(.touchUpInside)
+            .map { _ in DownloadScreen.DownloadAndOpen() }
+            .bind(to: events)
+            .disposed(by: disposeBag)
+        
+        mainView.cancelWaitingButton.rx.controlEvent(.touchUpInside)
+            .map { _ in DownloadScreen.DownloadingCancelled() }
+            .bind(to: events)
+            .disposed(by: disposeBag)
+        
+        mainView.retryButton.rx.controlEvent(.touchUpInside)
+            .map { _ in DownloadWaitingOverlay.Retry() }
+            .bind(to: events)
+            .disposed(by: disposeBag)
+        
         showWaitingOverlay(false)
+    }
+}
+
+extension DownloadScreenViewController {
+    private func showWaitingOverlay(_ show: Bool = true) {
+        mainView.waitingOverlayView.isHidden = !show
+    }
+    
+    private func showRetry(_ show: Bool = true) {
+        mainView.cancelWaitingButton.isHidden = show
+        mainView.retryButton.isHidden = !show
     }
 }

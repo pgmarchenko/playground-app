@@ -7,29 +7,36 @@
 //
 
 import Foundation
+import AppEntities
 
 public class AppFlow: FeatureFlow {
     public override func reset() {
         super.reset()
         
+        waitEvents(handleDownloadScreenWillAppear)
         waitEvents(handleDownloadScreenDidAppear)
+        waitEvents(handleMagiColorScreenWillAppear)
         waitEvents(handleMagiColorScreenDidAppear)
     }
 }
 
 private extension AppFlow {
-    func handleDownloadScreenDidAppear(_: DownloadScreen.DidAppear) {
+    func handleDownloadScreenWillAppear(_: UI.WillAppear<DownloadScreen>) {
+        output(UI.Hide(DownloadWaitingOverlay()))
+    }
+    
+    func handleDownloadScreenDidAppear(_: UI.DidAppear<DownloadScreen>) {
         removeAllChildFlows()
-        
-        output(MagiColorScreen.SetWhiteMode())
         
         addChildFlow(DownloadAndOpenFlow())
     }
     
-    func handleMagiColorScreenDidAppear(_: MagiColorScreen.DidAppear) {
+    func handleMagiColorScreenWillAppear(_: UI.WillAppear<MagiColorScreen>) {
+        output(MagiColorScreen.SetWhiteMode())
+    }
+    
+    func handleMagiColorScreenDidAppear(_: UI.DidAppear<MagiColorScreen>) {
         removeAllChildFlows()
-        
-        output(DownloadWaitingOverlay.Hide())
         
         addChildFlow(MagiColorScreenFlow())
     }

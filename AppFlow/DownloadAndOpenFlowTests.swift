@@ -11,6 +11,7 @@ import Quick
 import Nimble
 
 import AppFlow
+import AppEntities
 
 import RxSwift
 
@@ -24,7 +25,7 @@ class DownloadAndOpenFlowTests: QuickSpec {
                 flow.dispatch(DownloadScreen.DownloadAndOpen())
                 
                 expect(flow.popRecordedCommands()) == [
-                    DownloadWaitingOverlay.Show(),
+                    UI.Show(DownloadWaitingOverlay()),
                     Downloading.Start()
                 ]
             }
@@ -36,7 +37,7 @@ class DownloadAndOpenFlowTests: QuickSpec {
                 
                 it("Hides waitings overlay") {
                     expect(flow.popRecordedCommands()) == [
-                        DownloadWaitingOverlay.Hide(),
+                        UI.Hide(DownloadWaitingOverlay()),
                         Downloading.Cancel()
                     ]
                 }
@@ -51,7 +52,7 @@ class DownloadAndOpenFlowTests: QuickSpec {
                         DownloadScreen.DownloadAndOpen()
                     ],
                     commands: [
-                        DownloadWaitingOverlay.Show(),
+                        UI.Show(DownloadWaitingOverlay()),
                         Downloading.Start()
                     ]
                 ),
@@ -67,8 +68,8 @@ class DownloadAndOpenFlowTests: QuickSpec {
                         onEvents([
                             Downloading.Succeeded()
                             ], commands: [
-                                DownloadWaitingOverlay.Hide(),
-                                MagiColorScreen.Show()
+                                UI.Hide(DownloadWaitingOverlay()),
+                                UI.Show(MagiColorScreen())
                             ]
                         )
                     ],
@@ -77,7 +78,7 @@ class DownloadAndOpenFlowTests: QuickSpec {
                                 Downloading.Failed()
                             ],
                             commands: [
-                                DownloadWaitingOverlay.Hide()
+                                UI.Hide(DownloadWaitingOverlay())
                             ]
                         )
                     ]

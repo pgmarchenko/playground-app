@@ -8,113 +8,40 @@
 
 import UIKit
 
+import RxSwift
+
 import UI
 import App
 import AppFlow
-import RxSwift
+import AppEntities
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
 
     let appFlow = AppFlow()
+    let router = Router()
     let downloadService = DownloadService()
     let appDisposeBag = DisposeBag()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let rootVC = MenuScreenViewController()
+        router.attach(to: window)
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = rootVC
-        window?.makeKeyAndVisible()
+        appFlow.onAnyCommand(router.dispatchCommand)
+        appFlow.onAnyCommand(downloadService.dispatchCommand)
         
-        defer { appFlow.dispatch(DownloadScreen.DidAppear()) }
-        
-        rootVC.downloadScreen.rx.viewDidAppear
-            .map { _ in DownloadScreen.DidAppear() }
+        Observable.merge(
+            router.events,
+            downloadService.events
+        )
             .bind(onNext: appFlow.dispatch)
             .disposed(by: appDisposeBag)
-        
-        rootVC.magiColorScreen.rx.viewDidAppear
-            .map { _ in MagiColorScreen.DidAppear() }
-            .bind(onNext: appFlow.dispatch)
-            .disposed(by: appDisposeBag)
-        
-        rootVC.downloadScreen.onDownloadAndOpenClicked
-            .map { _ in DownloadScreen.DownloadAndOpen() }
-            .bind(onNext: appFlow.dispatch)
-            .disposed(by: appDisposeBag)
-        
-        rootVC.downloadScreen.onCancelDownloadClicked
-            .map { _ in DownloadScreen.DownloadingCancelled() }
-            .bind(onNext: appFlow.dispatch)
-            .disposed(by: appDisposeBag)
-        
-        
-        downloadService.onProgress
-            .map { Downloading.Progress(current: $0, total: $1) }
-            .bind(onNext: appFlow.dispatch)
-            .disposed(by: appDisposeBag)
-        
-        downloadService.onSuccess
-            .map { Downloading.Succeeded() }
-            .bind(onNext: appFlow.dispatch)
-            .disposed(by: appDisposeBag)
-        
-        downloadService.onError
-            .map { _ in Downloading.Failed() }
-            .bind(onNext: appFlow.dispatch)
-            .disposed(by: appDisposeBag)
-        
-        
-        appFlow.onCommand(DownloadWaitingOverlay.Show.self) { _ in
-            rootVC.downloadScreen.showWaitingOverlay()
-            rootVC.downloadScreen.showRetry(false)
-            
-            self.downloadService.download()
-        }
-        
-        appFlow.onCommand(DownloadWaitingOverlay.Hide.self) { _ in
-            rootVC.downloadScreen.showWaitingOverlay(false)
-            self.downloadService.cancel()
-        }
         
         appFlow.onCommand(DownloadWaitingOverlay.ShowProgress.self) { cmd in
             debugPrint("\(cmd.current) / \(cmd.total)")
-        }
-        
-        appFlow.onCommand(MagiColorScreen.Show.self) { _ in
-            rootVC.selectedIndex = 1
-        }
-        
-        rootVC.magiColorScreen.onChangeBGColorClicked
-            .map { _ in MagiColorScreen.RedButtonTouched() }
-            .bind(onNext: appFlow.dispatch)
-            .disposed(by: appDisposeBag)
-        
-        rootVC.magiColorScreen.onResetColorsClicked
-            .map { _ in MagiColorScreen.ResetButtonTouched() }
-            .bind(onNext: appFlow.dispatch)
-            .disposed(by: appDisposeBag)
-        
-        rootVC.magiColorScreen.onTutorialClicked
-            .map { _ in MagiColorScreen.TutorialSwitcherTouched() }
-            .bind(onNext: appFlow.dispatch)
-            .disposed(by: appDisposeBag)
-        
-        
-        appFlow.onCommand(MagiColorScreen.SetRedMode.self) { _ in
-            rootVC.magiColorScreen.fillWithButtonColor()
-        }
-        
-        appFlow.onCommand(MagiColorScreen.SetWhiteMode.self) { _ in
-            rootVC.magiColorScreen.resetColors()
-        }
-        
-        appFlow.onCommand(MagiColorScreen.SetTutorialTitle.self) { cmd in
-            rootVC.magiColorScreen.setTutorialText(cmd.title)
         }
         
         return true

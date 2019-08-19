@@ -8,11 +8,11 @@
 
 import Foundation
 
-public enum DownloadScreen {}
+public struct DownloadScreen: UIEntity, Equatable { public init() {} }
+
+
 
 public extension DownloadScreen {
-    struct DidAppear: FeatureFlowEvent { public init() {} }
-    
     struct DownloadAndOpen: FeatureFlowEvent { public init() {} }
     struct OpenForVideo: FeatureFlowEvent { public init() {} }
     

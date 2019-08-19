@@ -11,6 +11,7 @@ import Quick
 import Nimble
 
 import AppFlow
+import AppEntities
 
 import RxSwift
 
@@ -22,18 +23,24 @@ class AppFlowTests: QuickSpec {
             expectFlow(flow, [
                 onEvents(
                     [
-                        DownloadScreen.DidAppear(),
+                        UI.WillAppear(DownloadScreen()),
                     ],
                     commands: [
-                        MagiColorScreen.SetWhiteMode()
+                        UI.Hide(DownloadWaitingOverlay())
                     ]
+                ),
+                onEvents(
+                    [
+                        UI.DidAppear(DownloadScreen()),
+                    ],
+                    commands: []
                 ),
                 onEvents(
                     [
                         DownloadScreen.DownloadAndOpen()
                     ],
                     commands: [
-                        DownloadWaitingOverlay.Show(),
+                        UI.Show(DownloadWaitingOverlay()),
                         Downloading.Start()
                     ]
                 ),
@@ -42,17 +49,15 @@ class AppFlowTests: QuickSpec {
                         DownloadScreen.DownloadingCancelled()
                     ],
                     commands: [
-                        DownloadWaitingOverlay.Hide(),
+                        UI.Hide(DownloadWaitingOverlay()),
                         Downloading.Cancel()
                     ]
                 ),
                 onEvents(
                     [
-                        MagiColorScreen.DidAppear(),
+                        UI.DidAppear(MagiColorScreen()),
                     ],
-                    commands: [
-                        DownloadWaitingOverlay.Hide()
-                    ]
+                    commands: []
                 ),
                 onEvents(
                     [
@@ -72,11 +77,9 @@ class AppFlowTests: QuickSpec {
                 ),
                 onEvents(
                     [
-                        DownloadScreen.DidAppear(),
+                        UI.DidAppear(DownloadScreen()),
                     ],
-                    commands: [
-                        MagiColorScreen.SetWhiteMode()
-                    ]
+                    commands: []
                 ),
                 onEvents(
                     [
@@ -92,27 +95,10 @@ class AppFlowTests: QuickSpec {
                         DownloadScreen.DownloadAndOpen()
                     ],
                     commands: [
-                        DownloadWaitingOverlay.Show(),
+                        UI.Show(DownloadWaitingOverlay()),
                         Downloading.Start()
                     ]
                 )
-                
-//                branches(
-//                    [
-//                        (
-//                            onEvents: [MenuSelected()],
-//                            commands: [MenuScreenShow()]
-//                        ),
-//                        menuExpectations()
-//                    ],
-//                    [
-//                        (
-//                            onEvents: [SequencerSelected()],
-//                            commands: [SequencerScreenShow()]
-//                        ),
-//                        sequencerExpectations()
-//                    ]
-//                )
             ])
         }
     }

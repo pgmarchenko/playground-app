@@ -11,6 +11,7 @@ import Quick
 import Nimble
 
 import AppFlow
+import AppEntities
 
 import RxSwift
 

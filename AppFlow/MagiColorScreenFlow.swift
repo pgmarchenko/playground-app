@@ -8,6 +8,8 @@
 
 import Foundation
 
+import AppEntities
+
 public class MagiColorScreenFlow: FeatureFlow {
     public override func reset() {
         super.reset()

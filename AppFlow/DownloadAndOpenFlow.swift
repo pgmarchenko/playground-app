@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AppEntities
 
 public class DownloadAndOpenFlow: FeatureFlow {
     public override func reset() {
@@ -18,7 +19,7 @@ public class DownloadAndOpenFlow: FeatureFlow {
 
 private extension DownloadAndOpenFlow {
     func handleDownloadAndOpen(_: DownloadScreen.DownloadAndOpen) {
-        output(DownloadWaitingOverlay.Show())
+        output(UI.Show(DownloadWaitingOverlay()))
         output(Downloading.Start())
         
         removeHandlers()
@@ -27,22 +28,22 @@ private extension DownloadAndOpenFlow {
         waitSingleEvent(handleDownloadFailed)
         
         waitSingleEvent { (event: Downloading.Succeeded) in
-            self.output(DownloadWaitingOverlay.Hide())
-            self.output(MagiColorScreen.Show())
+            self.output(UI.Hide(DownloadWaitingOverlay()))
+            self.output(UI.Show(MagiColorScreen()))
             
             self.reset()
         }
     }
     
     func handleDownloadCancelled(_: DownloadScreen.DownloadingCancelled) {
-        output(DownloadWaitingOverlay.Hide())
+        output(UI.Hide(DownloadWaitingOverlay()))
         output(Downloading.Cancel())
         
         reset()
     }
     
     func handleDownloadFailed(_: Downloading.Failed) {
-        output(DownloadWaitingOverlay.Hide())
+        output(UI.Hide(DownloadWaitingOverlay()))
         
         reset()
     }

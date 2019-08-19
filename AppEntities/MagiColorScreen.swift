@@ -8,12 +8,10 @@
 
 import Foundation
 
-public enum MagiColorScreen {}
+public struct MagiColorScreen: UIEntity, Equatable { public init() {} }
 
 
 public extension MagiColorScreen {
-    struct DidAppear: FeatureFlowEvent { public init() {} }
-    
     struct RedButtonTouched: FeatureFlowEvent { public init() {} }
     struct ResetButtonTouched: FeatureFlowEvent { public init() {} }
     
@@ -22,8 +20,6 @@ public extension MagiColorScreen {
 
 
 public extension MagiColorScreen {
-    struct Show: FeatureFlowCommand, Equatable { public init() {} }
-    
     struct SetRedMode: FeatureFlowCommand, Equatable { public init() {} }
     struct SetWhiteMode: FeatureFlowCommand, Equatable { public init() {} }
     
