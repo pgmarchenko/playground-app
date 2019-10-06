@@ -13,8 +13,13 @@ public struct DownloadScreen: UIEntity, Equatable { public init() {} }
 
 
 public extension DownloadScreen {
-    struct DownloadAndOpen: FeatureFlowEvent { public init() {} }
-    struct OpenForVideo: FeatureFlowEvent { public init() {} }
+    struct OpenMagicolorScreen: FeatureFlowEvent {
+        public let id: String
+        
+        public init(id: String) {
+            self.id = id
+        }
+    }
     
     struct DownloadingCancelled: FeatureFlowEvent { public init() {} }
 }

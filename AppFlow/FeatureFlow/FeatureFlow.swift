@@ -11,6 +11,29 @@ import RxSwift
 import RxCocoa
 import AppEntities
 
+protocol Callable {
+    func call(_ e: FeatureFlowCommand) -> FeatureFlowCommand?
+}
+
+class Func<Input: FeatureFlowCommand>: Callable {
+    
+    init(_ f: @escaping (Input)->FeatureFlowCommand) {
+        self.f = f
+        self.input = Input.self
+    }
+    
+    func call(_ e: FeatureFlowCommand) -> FeatureFlowCommand? {
+        if let input = e as? Input {
+            return f(input)
+        } else {
+            return nil
+        }
+    }
+    
+    let input: Input.Type
+    let f: (Input)->FeatureFlowCommand
+}
+
 extension PublishSubject {
     public func takeActions<Action: FeatureFlowAction>(count: Int? = nil, _ handler: @escaping (Action) -> Void) -> Disposable {
         
@@ -52,10 +75,25 @@ public class FeatureFlowEngine {
                 .disposed(by: disposeBag)
         }
     }
-
+    
+    public func addCommandMapper<Event: FeatureFlowCommand, Extended: FeatureFlowCommand>(_ e: Event.Type, mapper: @escaping (Event)->Extended) {
+        mappers.append(Func(mapper))
+    }
+    
+    func mapCommand(_ c: FeatureFlowCommand) -> FeatureFlowCommand {
+        for f in self.mappers {
+            if let res = f.call(c) {
+                return res
+            }
+        }
+        
+        return c
+    }
     
     let input = PublishSubject<FeatureFlowEvent>()
     let output = PublishSubject<FeatureFlowCommand>()
+    
+    var mappers: [Callable] = []
     
     var inputDisposeBag = DisposeBag()
     
@@ -118,11 +156,17 @@ extension FeatureFlowEngineDriven {
             )
             .disposed(by: flowEngine.disposeBag)
     }
+    
+    public func addCommandMapper<Event: FeatureFlowCommand, Extended: FeatureFlowCommand>(_ e: Event.Type, mapper: @escaping (Event)->Extended) {
+        flowEngine.addCommandMapper(e, mapper: mapper)
+    }
 }
 
 extension FeatureFlowEngineDriven {
     public func output(_ command: FeatureFlowCommand) {
-        self.flowEngine.output.onNext(command)
+        let c = flowEngine.mapCommand(command)
+        
+        self.flowEngine.output.onNext(c)
     }
     
     public func output(_ commands: [FeatureFlowCommand]) {

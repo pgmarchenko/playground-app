@@ -8,11 +8,13 @@
 
 import Foundation
 
+public protocol EventParams { }
+
 public struct MagiColorScreen: UIEntity, Equatable { public init() {} }
 
 
 public extension MagiColorScreen {
-    struct RedButtonTouched: FeatureFlowEvent { public init() {} }
+    struct ColorButtonTouched: FeatureFlowEvent { public init() {} }
     struct ResetButtonTouched: FeatureFlowEvent { public init() {} }
     
     struct TutorialSwitcherTouched: FeatureFlowEvent { public init() {} }
@@ -20,8 +22,25 @@ public extension MagiColorScreen {
 
 
 public extension MagiColorScreen {
-    struct SetRedMode: FeatureFlowCommand, Equatable { public init() {} }
-    struct SetWhiteMode: FeatureFlowCommand, Equatable { public init() {} }
+    struct ColorsParams: Equatable, EventParams {
+        public let primary: String
+        public let `default`: String
+        
+        public init(primary: String, default: String) {
+            self.primary = primary
+            self.default = `default`
+        }
+    }
+    
+    struct SetColors: FeatureFlowCommand, Equatable {
+        public let params: ColorsParams
+        
+        public init(params: ColorsParams) {
+            self.params = params
+        }
+    }
+    struct SetColorMode: FeatureFlowCommand, Equatable { public init() {} }
+    struct SetDefaultMode: FeatureFlowCommand, Equatable { public init() {} }
     
     struct SetTutorialTitle: FeatureFlowCommand, Equatable {
         public let title: String?

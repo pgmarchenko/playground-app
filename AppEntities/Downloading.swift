@@ -31,3 +31,13 @@ public extension Downloading {
     struct Start: FeatureFlowCommand, Equatable { public init() {} }
     struct Cancel: FeatureFlowCommand, Equatable { public init() {} }
 }
+
+extension Downloading.Start {
+    public struct Params: Equatable {
+        public let url: String
+        
+        public init(url: String) {
+            self.url = url
+        }
+    }
+}

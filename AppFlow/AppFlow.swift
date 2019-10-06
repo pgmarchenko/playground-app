@@ -32,7 +32,7 @@ private extension AppFlow {
     }
     
     func handleMagiColorScreenWillAppear(_: UI.WillAppear<MagiColorScreen>) {
-        output(MagiColorScreen.SetWhiteMode())
+        output(MagiColorScreen.SetDefaultMode())
     }
     
     func handleMagiColorScreenDidAppear(_: UI.DidAppear<MagiColorScreen>) {

@@ -37,7 +37,10 @@ class AppFlowTests: QuickSpec {
                 ),
                 onEvents(
                     [
-                        DownloadScreen.DownloadAndOpen()
+                        ExtendedEvent(
+                            DownloadScreen.OpenMagicolorScreen(id: ""),
+                            params: MagiColorScreen.ColorsParams(primary: "green", default: "white")
+                        )
                     ],
                     commands: [
                         UI.Show(DownloadWaitingOverlay()),
@@ -61,10 +64,10 @@ class AppFlowTests: QuickSpec {
                 ),
                 onEvents(
                     [
-                        MagiColorScreen.RedButtonTouched()
+                        MagiColorScreen.ColorButtonTouched()
                     ],
                     commands: [
-                        MagiColorScreen.SetRedMode()
+                        MagiColorScreen.SetColorMode()
                     ]
                 ),
                 onEvents(
@@ -72,7 +75,7 @@ class AppFlowTests: QuickSpec {
                         MagiColorScreen.ResetButtonTouched()
                     ],
                     commands: [
-                        MagiColorScreen.SetWhiteMode()
+                        MagiColorScreen.SetDefaultMode()
                     ]
                 ),
                 onEvents(
@@ -83,7 +86,7 @@ class AppFlowTests: QuickSpec {
                 ),
                 onEvents(
                     [
-                        MagiColorScreen.RedButtonTouched(),
+                        MagiColorScreen.ColorButtonTouched(),
                         MagiColorScreen.ResetButtonTouched()
                     ],
                     commands: [
@@ -92,7 +95,10 @@ class AppFlowTests: QuickSpec {
                 ),
                 onEvents(
                     [
-                        DownloadScreen.DownloadAndOpen()
+                        ExtendedEvent(
+                            DownloadScreen.OpenMagicolorScreen(id: ""),
+                            params: MagiColorScreen.ColorsParams(primary: "green", default: "white")
+                        )
                     ],
                     commands: [
                         UI.Show(DownloadWaitingOverlay()),

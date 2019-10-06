@@ -13,6 +13,7 @@
 		7F11CB9D22D49C3A00BB8212 /* MagiColorScreenFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CB9C22D49C3A00BB8212 /* MagiColorScreenFlow.swift */; };
 		7F11CB9F22D4B63300BB8212 /* MagiColorScreenFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CB9E22D4B63300BB8212 /* MagiColorScreenFlowTests.swift */; };
 		7F11CBA122D5FE3F00BB8212 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F11CBA022D5FE3F00BB8212 /* DownloadService.swift */; };
+		7F192E9A230A9D2400D44F36 /* Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F192E99230A9D2400D44F36 /* Extended.swift */; };
 		7F22410721638F2B001B53B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22410621638F2B001B53B2 /* AppDelegate.swift */; };
 		7F22410E21638F2C001B53B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410D21638F2C001B53B2 /* Assets.xcassets */; };
 		7F22411121638F2C001B53B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F22410F21638F2C001B53B2 /* LaunchScreen.storyboard */; };
@@ -155,6 +156,7 @@
 		7F11CBAB22D6222100BB8212 /* MagiColorScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagiColorScreen.swift; sourceTree = "<group>"; };
 		7F11CBAD22D6225F00BB8212 /* Downloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloading.swift; sourceTree = "<group>"; };
 		7F11CBAF22D6228F00BB8212 /* DownloadWaitingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadWaitingOverlay.swift; sourceTree = "<group>"; };
+		7F192E99230A9D2400D44F36 /* Extended.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extended.swift; sourceTree = "<group>"; };
 		7F22410321638F2A001B53B2 /* PlaygroundApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaygroundApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F22410621638F2B001B53B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F22410D21638F2C001B53B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				7F11CBAF22D6228F00BB8212 /* DownloadWaitingOverlay.swift */,
 				7F9D868F230137D0004A1347 /* AppEntities.h */,
 				7F9D8690230137D0004A1347 /* Info.plist */,
+				7F192E99230A9D2400D44F36 /* Extended.swift */,
 			);
 			path = AppEntities;
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 			files = (
 				7F9D86AE23013861004A1347 /* FeatureFlowEvent.swift in Sources */,
 				7F9D86B82306AC97004A1347 /* UI.swift in Sources */,
+				7F192E9A230A9D2400D44F36 /* Extended.swift in Sources */,
 				7F9D86AA23013802004A1347 /* DownloadWaitingOverlay.swift in Sources */,
 				7F9D86AF23013861004A1347 /* Array+FeatureFlowCommand.swift in Sources */,
 				7F9D86AC23013802004A1347 /* DownloadScreen.swift in Sources */,

@@ -13,9 +13,11 @@ public class MagiColorScreenViewController: UIViewController {
     
     public func dispatchCommand(_ cmd: FeatureFlowCommand) {
         switch cmd {
-        case is MagiColorScreen.SetRedMode:
+        case let cmd as MagiColorScreen.SetColors:
+            setColors(cmd: cmd)
+        case is MagiColorScreen.SetColorMode:
             fillWithButtonColor()
-        case is MagiColorScreen.SetWhiteMode:
+        case is MagiColorScreen.SetDefaultMode:
             resetColors()
         case let cmd as MagiColorScreen.SetTutorialTitle:
             setTutorialText(cmd.title)
@@ -23,9 +25,12 @@ public class MagiColorScreenViewController: UIViewController {
             break
         }
     }
-
+    
     let mainView = MagiColorScreenView()
     let disposeBag = DisposeBag()
+    
+    private var primaryColor = UIColor.red
+    private var defaultColor = UIColor.white
 }
 
 extension MagiColorScreenViewController {
@@ -37,7 +42,7 @@ extension MagiColorScreenViewController {
         super.viewDidLoad()
         
         mainView.changeBGColorButton.rx.controlEvent(.touchUpInside)
-            .map { _ in MagiColorScreen.RedButtonTouched() }
+            .map { _ in MagiColorScreen.ColorButtonTouched() }
             .bind(to: events)
             .disposed(by: disposeBag)
         
@@ -64,16 +69,37 @@ extension MagiColorScreenViewController {
     }
     
     func resetColors() {
-        mainView.backgroundColor = .white
-        mainView.changeBGColorButton.backgroundColor = .red
-        
-        mainView.resetColorsButton.backgroundColor = mainView.backgroundColor
+        mainView.setColors(primary: primaryColor, default: defaultColor)
         
         mainView.changeBGColorButton.isHidden = false
         mainView.resetColorsButton.isHidden = true
     }
     
+    func setColors(cmd: MagiColorScreen.SetColors) {
+        guard let primaryColor = cmd.params.primary.uiColor, let defaultColor = cmd.params.default.uiColor else {
+            return
+        }
+        
+        self.primaryColor = primaryColor
+        self.defaultColor = defaultColor
+    }
+    
     func setTutorialText(_ text: String?) {
         mainView.tutorialLabel.text = text
+    }
+}
+
+extension String {
+    var uiColor: UIColor? {
+        switch self {
+        case "red":
+            return .red
+        case "white":
+            return .white
+        case "green":
+            return .green
+        default:
+            return nil
+        }
     }
 }

@@ -22,7 +22,12 @@ class DownloadAndOpenFlowTests: QuickSpec {
             
             beforeEach {
                 flow = DownloadAndOpenFlow(record: true)
-                flow.dispatch(DownloadScreen.DownloadAndOpen())
+                flow.dispatch(
+                    ExtendedEvent(
+                        DownloadScreen.OpenMagicolorScreen(id: ""),
+                        params: MagiColorScreen.ColorsParams(primary: "green", default: "white")
+                    )
+                )
                 
                 expect(flow.popRecordedCommands()) == [
                     UI.Show(DownloadWaitingOverlay()),
@@ -46,10 +51,14 @@ class DownloadAndOpenFlowTests: QuickSpec {
         
         describe("Download with progress") {
             let flow = DownloadAndOpenFlow(record: true)
+            let params = MagiColorScreen.ColorsParams(primary: "green", default: "white")
             
             expectFlow(flow, [
                 onEvents([
-                        DownloadScreen.DownloadAndOpen()
+                        ExtendedEvent(
+                            DownloadScreen.OpenMagicolorScreen(id: ""),
+                            params: params
+                        )
                     ],
                     commands: [
                         UI.Show(DownloadWaitingOverlay()),
@@ -59,16 +68,16 @@ class DownloadAndOpenFlowTests: QuickSpec {
                 branches(
                     [
                         onEvents([
-                            Downloading.Progress(current: 10, total: 100)
-                            ],
-                                 commands: [
+                                Downloading.Progress(current: 10, total: 100)
+                            ], commands: [
                                     DownloadWaitingOverlay.ShowProgress(current: 10, total: 100)
                             ]
                         ),
                         onEvents([
-                            Downloading.Succeeded()
+                                Downloading.Succeeded()
                             ], commands: [
                                 UI.Hide(DownloadWaitingOverlay()),
+                                MagiColorScreen.SetColors(params: params),
                                 UI.Show(MagiColorScreen())
                             ]
                         )
@@ -76,8 +85,7 @@ class DownloadAndOpenFlowTests: QuickSpec {
                     [
                         onEvents([
                                 Downloading.Failed()
-                            ],
-                            commands: [
+                            ], commands: [
                                 UI.Hide(DownloadWaitingOverlay())
                             ]
                         )

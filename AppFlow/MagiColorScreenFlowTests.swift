@@ -23,10 +23,10 @@ class MagiColorScreenFlowTests: QuickSpec {
             expectFlow(flow, [
                 onEvents(
                     [
-                        MagiColorScreen.RedButtonTouched(),
+                        MagiColorScreen.ColorButtonTouched(),
                     ],
                     commands: [
-                        MagiColorScreen.SetRedMode()
+                        MagiColorScreen.SetColorMode()
                     ]
                 ),
                 onEvents(
@@ -34,7 +34,7 @@ class MagiColorScreenFlowTests: QuickSpec {
                         MagiColorScreen.ResetButtonTouched(),
                     ],
                     commands: [
-                        MagiColorScreen.SetWhiteMode()
+                        MagiColorScreen.SetDefaultMode()
                     ]
                 )
             ])
@@ -47,7 +47,7 @@ class MagiColorScreenFlowTests: QuickSpec {
                 onEvents(
                     [
                         MagiColorScreen.TutorialSwitcherTouched(),
-                        MagiColorScreen.RedButtonTouched(),
+                        MagiColorScreen.ColorButtonTouched(),
                         MagiColorScreen.TutorialSwitcherTouched()
                     ],
                     commands: [
@@ -65,13 +65,13 @@ class MagiColorScreenFlowTests: QuickSpec {
             expectFlow(flow, [
                 onEvents(
                     [
-                        MagiColorScreen.RedButtonTouched(),
+                        MagiColorScreen.ColorButtonTouched(),
                         MagiColorScreen.TutorialSwitcherTouched(),
                         MagiColorScreen.ResetButtonTouched(),
                         MagiColorScreen.TutorialSwitcherTouched()
                     ],
                     commands: [
-                        MagiColorScreen.SetRedMode(),
+                        MagiColorScreen.SetColorMode(),
                         MagiColorScreen.SetTutorialTitle("Tutorial mode!"),
                         MagiColorScreen.SetTutorialTitle("Will change colors back"),
                         MagiColorScreen.SetTutorialTitle(nil)
@@ -82,7 +82,7 @@ class MagiColorScreenFlowTests: QuickSpec {
                         MagiColorScreen.ResetButtonTouched()
                     ],
                     commands: [
-                        MagiColorScreen.SetWhiteMode()
+                        MagiColorScreen.SetDefaultMode()
                     ]
                 )
                 ]

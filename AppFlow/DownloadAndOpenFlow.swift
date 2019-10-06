@@ -18,7 +18,7 @@ public class DownloadAndOpenFlow: FeatureFlow {
 }
 
 private extension DownloadAndOpenFlow {
-    func handleDownloadAndOpen(_: DownloadScreen.DownloadAndOpen) {
+    func handleDownloadAndOpen(ee: ExtendedEvent<DownloadScreen.OpenMagicolorScreen, MagiColorScreen.ColorsParams>) {
         output(UI.Show(DownloadWaitingOverlay()))
         output(Downloading.Start())
         
@@ -29,6 +29,7 @@ private extension DownloadAndOpenFlow {
         
         waitSingleEvent { (event: Downloading.Succeeded) in
             self.output(UI.Hide(DownloadWaitingOverlay()))
+            self.output(MagiColorScreen.SetColors(params: ee.params))
             self.output(UI.Show(MagiColorScreen()))
             
             self.reset()

@@ -21,12 +21,12 @@ public class MagiColorScreenFlow: FeatureFlow {
 }
 
 private extension MagiColorScreenFlow {
-    func handleRedButtonTouched(_: MagiColorScreen.RedButtonTouched) {
-        output(MagiColorScreen.SetRedMode())
+    func handleRedButtonTouched(_: MagiColorScreen.ColorButtonTouched) {
+        output(MagiColorScreen.SetColorMode())
     }
     
     func handleResetButtonTouched(_: MagiColorScreen.ResetButtonTouched) {
-        output(MagiColorScreen.SetWhiteMode())
+        output(MagiColorScreen.SetDefaultMode())
     }
     
     func handleTutorialTouched(_: MagiColorScreen.TutorialSwitcherTouched) {
@@ -46,7 +46,7 @@ private extension MagiColorScreenFlow {
         reset()
     }
     
-    func handleRedButtonTutorial(_: MagiColorScreen.RedButtonTouched) {
+    func handleRedButtonTutorial(_: MagiColorScreen.ColorButtonTouched) {
         output(MagiColorScreen.SetTutorialTitle("Will change background color to self color"))
     }
     

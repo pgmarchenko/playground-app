@@ -15,6 +15,7 @@ public class DownloadScreenView: UIView {
     }
     
     let downloadAndOpenButton = UIButton()
+    let openPremiumButton = UIButton()
     
     let waitingOverlayView = UIView()
     let cancelWaitingButton = UIButton()
@@ -23,10 +24,13 @@ public class DownloadScreenView: UIView {
 
 extension DownloadScreenView {
     private func assemble() {
-        self.backgroundColor = .orange
+        self.backgroundColor = .brown
         
-        downloadAndOpenButton.backgroundColor = .black
-        downloadAndOpenButton.setTitle("Download & Open", for: .normal)
+        downloadAndOpenButton.backgroundColor = .red
+        downloadAndOpenButton.setTitle("Open Red&White", for: .normal)
+        
+        openPremiumButton.backgroundColor = .green
+        openPremiumButton.setTitle("Open Green&White", for: .normal)
         
         waitingOverlayView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
@@ -37,6 +41,7 @@ extension DownloadScreenView {
         retryButton.setTitle("Retry", for: .normal)
         
         addSubview(downloadAndOpenButton)
+        addSubview(openPremiumButton)
         addSubview(waitingOverlayView)
         
         waitingOverlayView.addSubview(cancelWaitingButton)
@@ -49,6 +54,12 @@ extension DownloadScreenView {
         downloadAndOpenButton.snp.makeConstraints { make in
             make.center.equalTo(self)
             make.size.equalTo(CGSize.init(width: 200, height: 50))
+        }
+        
+        openPremiumButton.snp.makeConstraints { make in
+            make.top.equalTo(downloadAndOpenButton.snp.bottom).offset(20)
+            make.centerX.equalTo(downloadAndOpenButton)
+            make.size.equalTo(downloadAndOpenButton)
         }
         
         waitingOverlayView.snp.makeConstraints { make in

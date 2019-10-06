@@ -22,8 +22,8 @@ public class DownloadService {
     
     public func dispatchCommand(_ cmd: FeatureFlowCommand) {
         switch cmd {
-        case is Downloading.Start:
-            download()
+        case let e as ExtendedCommand<Downloading.Start, String>:
+            download(url: e.params)
         case is Downloading.Cancel:
             cancel()
         default:
@@ -41,7 +41,7 @@ public class DownloadService {
 
 
 extension DownloadService {
-    func download() {
+    func download(url: String) {
         let success = arc4random_uniform(2) == 0
         let responseTime = Double(arc4random_uniform(3) + 1)
         

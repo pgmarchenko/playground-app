@@ -38,7 +38,12 @@ extension DownloadScreenViewController {
         super.viewDidLoad()
         
         mainView.downloadAndOpenButton.rx.controlEvent(.touchUpInside)
-            .map { _ in DownloadScreen.DownloadAndOpen() }
+            .map { _ in DownloadScreen.OpenMagicolorScreen(id: "r&w") }
+            .bind(to: events)
+            .disposed(by: disposeBag)
+        
+        mainView.openPremiumButton.rx.controlEvent(.touchUpInside)
+            .map { _ in DownloadScreen.OpenMagicolorScreen(id: "g&w") }
             .bind(to: events)
             .disposed(by: disposeBag)
         

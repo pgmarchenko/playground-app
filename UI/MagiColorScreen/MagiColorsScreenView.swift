@@ -13,6 +13,16 @@ public class MagiColorScreenView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setColors(primary: UIColor, default: UIColor) {
+        hiddenLabel.textColor = `default`
+        hidingLabel.textColor = primary
+        
+        backgroundColor = `default`
+        changeBGColorButton.backgroundColor = primary
+        
+        resetColorsButton.backgroundColor = backgroundColor
+    }
+    
     let hiddenLabel = UILabel()
     let hidingLabel = UILabel()
     
@@ -26,10 +36,8 @@ public class MagiColorScreenView: UIView {
 extension MagiColorScreenView {
     private func assemble() {
         hiddenLabel.text = "Hidden white text"
-        hiddenLabel.textColor = .white
         
         hidingLabel.text = "Will hide"
-        hidingLabel.textColor = .red
         
         tutorialButton.setTitle("TUTORIAL", for: .normal)
         tutorialButton.backgroundColor = .orange
